@@ -228,3 +228,19 @@ USE [master]
 GO
 ALTER DATABASE [ECommerceDemo] SET  READ_WRITE 
 GO
+
+
+USE [ECommerceDemo]
+GO
+
+/****** Object: SqlProcedure [dbo].[sp_GetProductList] Script Date: 21-04-2022 10.39.31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[sp_GetProductList]
+AS
+	Select * from Product P;
