@@ -244,3 +244,25 @@ GO
 CREATE PROCEDURE [dbo].[sp_GetProductList]
 AS
 	Select * from Product P;
+	
+	--------------------------------------------
+USE [ECommerceDemo]
+GO
+
+/****** Object: SqlProcedure [dbo].[sp_GetProductList] Script Date: 22-04-2022 12:42:47 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+ALTER PROCEDURE [dbo].[sp_GetProductList]
+AS
+	Select * from Product P 
+--left join ProductCategory pc
+--on pc.ProdCatId = p.ProdCatId;
+

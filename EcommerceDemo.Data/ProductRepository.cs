@@ -23,15 +23,21 @@ namespace EcommerceDemo.Data
         public List<Product> List(Product product)
         {
             List<DbParameter> test = new List<DbParameter>();
-            
-            string serializedMyObjects=string.Empty;
-            DataTable dataTable = base.GetDataReader("sp_GetProductList", test);
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+
+            string serializedMyObjects = string.Empty;
+            DbDataReader dbDataReader = base.GetDataReader("sp_GetProductList", test);
+            Product product1;
+            List<Product> products = new List<Product>();
+            while (dbDataReader.Read())
             {
-                serializedMyObjects = JsonConvert.SerializeObject(dataTable);
+                product1 = new Product();
+                product1.ProdDescription = dbDataReader["ProdDescription"].ToString();
+                product1.ProdName = dbDataReader["ProdName"].ToString();
+                product1.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);
+                products.Add(product1);
             }
-            List<Product> productt = JsonConvert.DeserializeObject<List<Product>>(serializedMyObjects);
-            return productt;
+
+            return products;
         }
 
         public string Add(Product product)

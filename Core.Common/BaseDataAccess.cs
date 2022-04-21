@@ -111,7 +111,7 @@ namespace Core.Common
             return returnValue;
         }
 
-        public DataTable GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
+        public DbDataReader GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
         {
             DbDataReader ds;
             DataTable table = new DataTable();
@@ -126,10 +126,10 @@ namespace Core.Common
                     }
 
                     ds = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    if (ds.FieldCount > 0)
-                    {
-                        table.Load(ds);
-                    }
+                    //if (ds.FieldCount > 0)
+                    //{
+                    //    table.Load(ds);
+                    //}
 
                 }
             }
@@ -139,7 +139,7 @@ namespace Core.Common
                 throw;
             }
 
-            return table;
+            return ds;
         }
     }
 }
