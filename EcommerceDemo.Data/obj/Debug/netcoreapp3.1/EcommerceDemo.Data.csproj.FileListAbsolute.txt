@@ -1,9 +1,0 @@
-D:\Test\EcommerceDemo.Data\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.deps.json
-D:\Test\EcommerceDemo.Data\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.dll
-D:\Test\EcommerceDemo.Data\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.pdb
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.csproj.AssemblyReference.cache
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.AssemblyInfoInputs.cache
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.AssemblyInfo.cs
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.csproj.CoreCompileInputs.cache
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.dll
-D:\Test\EcommerceDemo.Data\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.pdb
