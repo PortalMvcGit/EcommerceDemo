@@ -17,16 +17,18 @@ namespace EcommerceDemo.Web.Controllers
 
         private readonly IHttpContextAccessor _httpContextAccessor;
 
+        private readonly ServiceHelperWebApi _serviceHelperWebApi;
+
         public ProductController(ILogger<ProductController> logger, IHttpContextAccessor contextAccessor)
         {
             _logger = logger;
             _httpContextAccessor = contextAccessor;
+            _serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor);
         }
 
         public IActionResult Index()
         {
-            ServiceHelperWebApi serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor);
-            serviceHelperWebApi.ExecuteServiceRequest<string, string>("Product", "Test",string.Empty);
+            _serviceHelperWebApi.ExecuteServiceRequest<string, string>("Product", "Test",string.Empty);
             return View();
         }
 
