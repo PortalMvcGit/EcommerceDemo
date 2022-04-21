@@ -9,16 +9,16 @@ namespace EcommerceDemo.Service.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class ProductController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<ProductController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
         }
@@ -35,5 +35,12 @@ namespace EcommerceDemo.Service.Controllers
             })
             .ToArray();
         }
+
+        [HttpPost]
+        public string ProductList([FromBody] string test)
+        {
+            return "APi Later";
+        }
+
     }
 }
