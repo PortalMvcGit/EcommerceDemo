@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Web", "EcommerceDemo.Web.csproj", "{01CFBA1D-2E78-42C8-9518-15BF01C29E04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Web", "EcommerceDemo.Web.csproj", "{01CFBA1D-2E78-42C8-9518-15BF01C29E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Service", "..\EcommerceDemo.Service\EcommerceDemo.Service.csproj", "{F561C149-0F83-414E-973A-642606668DD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Service", "..\EcommerceDemo.Service\EcommerceDemo.Service.csproj", "{F561C149-0F83-414E-973A-642606668DD5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 DataAccess", "04 DataAccess", "{18923143-7E6F-4F8E-A4D0-F830B87BB6DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Data.Interface", "..\EcommerceDemo.Data.Interface\EcommerceDemo.Data.Interface.csproj", "{C06D9F56-E430-47E0-9D9F-043B6E5ED4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Data.Interface", "..\EcommerceDemo.Data.Interface\EcommerceDemo.Data.Interface.csproj", "{C06D9F56-E430-47E0-9D9F-043B6E5ED4E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Data", "..\EcommerceDemo.Data\EcommerceDemo.Data.csproj", "{B941DF10-E8A8-4E54-B57B-3149E200DB4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Data", "..\EcommerceDemo.Data\EcommerceDemo.Data.csproj", "{B941DF10-E8A8-4E54-B57B-3149E200DB4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Web", "01 Web", "{0BCABB9D-1F68-47CC-B816-49652774AFA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Service", "02 Service", "{D8AE68F4-FBF5-4C74-8B68-EAB904B63792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xcvxcv", "xcvxcv", "{26369E54-EE8D-49AC-9F1D-9D7401E34BC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
