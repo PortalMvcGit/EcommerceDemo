@@ -10,16 +10,9 @@ namespace Core.Common
 {
     public class BaseDataAccess
     {
-        private readonly IConfiguration _config;
+        public string ConnectionString { get; set; }
 
-        protected string ConnectionString { get; set; }
-
-        public BaseDataAccess()
-        {
-            this.ConnectionString = _config["AppSettings:ConnectionString"];
-        }
-
-        internal SqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
             SqlConnection connection = new SqlConnection(this.ConnectionString);
             if (connection.State != ConnectionState.Open)
@@ -34,14 +27,14 @@ namespace Core.Common
             return command;
         }
 
-        protected SqlParameter GetParameter(string parameter, object value)
+        public SqlParameter GetParameter(string parameter, object value)
         {
             SqlParameter parameterObject = new SqlParameter(parameter, value != null ? value : DBNull.Value);
             parameterObject.Direction = ParameterDirection.Input;
             return parameterObject;
         }
 
-        protected SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)
+        public SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)
         {
             SqlParameter parameterObject = new SqlParameter(parameter, type); ;
 
@@ -64,7 +57,7 @@ namespace Core.Common
             return parameterObject;
         }
 
-        protected int ExecuteNonQuery(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
+        public int ExecuteNonQuery(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
         {
             int returnValue = -1;
 
@@ -91,7 +84,7 @@ namespace Core.Common
             return returnValue;
         }
 
-        protected object ExecuteScalar(string procedureName, List<SqlParameter> parameters)
+        public object ExecuteScalar(string procedureName, List<SqlParameter> parameters)
         {
             object returnValue = null;
 
@@ -118,10 +111,10 @@ namespace Core.Common
             return returnValue;
         }
 
-        protected DbDataReader GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
+        public DataTable GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
         {
             DbDataReader ds;
-
+            DataTable table = new DataTable();
             try
             {
                 DbConnection connection = this.GetConnection();
@@ -133,6 +126,11 @@ namespace Core.Common
                     }
 
                     ds = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    if (ds.FieldCount > 0)
+                    {
+                        table.Load(ds);
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -141,7 +139,7 @@ namespace Core.Common
                 throw;
             }
 
-            return ds;
+            return table;
         }
     }
 }

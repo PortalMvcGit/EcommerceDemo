@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Core.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using EcommerceDemo.Model;
 
 namespace EcommerceDemo.Web.Controllers
 {
@@ -32,7 +33,7 @@ namespace EcommerceDemo.Web.Controllers
 
         public IActionResult Index()
         {
-            _serviceHelperWebApi.ExecuteServiceRequest<string, string>("Product", "Test", string.Empty);
+            List<Product>  listProduct = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("Product");
             return View();
         }
 

@@ -6,8 +6,10 @@ namespace EcommerceDemo.Model
     {
         public int ProductId { get; set; }
 
-        public string ProductDesc { get; set; }
+        public string ProdDescription { get; set; }
 
-        public int ProductCatId { get; set; }
+        public string ProdName { get; set; }
+
+        public int ProdCatId { get; set; }
     }
 }

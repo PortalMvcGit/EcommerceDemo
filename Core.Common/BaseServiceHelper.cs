@@ -6,7 +6,10 @@ namespace Core.Common
 {
     public abstract class BaseServiceHelper
     {
-        public abstract TResult ExecuteServiceRequest<TRequest, TResult>(string apiUrl, TRequest request, string baseAddress = null, int cancelTime = 0);
+        public abstract TResult ExecuteServicePostRequest<TRequest, TResult>(string apiUrl, TRequest request, int cancelTime = 0);
+
+
+        public abstract TResult ExecuteServiceGetRequest<TResult>(string apiUrl, int cancelTime = 0);
 
     }
 }

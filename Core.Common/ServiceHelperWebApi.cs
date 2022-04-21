@@ -37,7 +37,7 @@ namespace Core.Common
         /// <param name="apiUrl">The API URL.</param>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        public override TResult ExecuteServiceRequest<TRequest, TResult>(string apiUrl, TRequest request, string baseAddress, int cancelTime = 0)
+        public override TResult ExecuteServicePostRequest<TRequest, TResult>(string apiUrl, TRequest request, int cancelTime = 0)
         {
             TResult result = default(TResult);
             HttpResponseMessage httpResponse = new HttpResponseMessage();
@@ -51,15 +51,8 @@ namespace Core.Common
             {
                 // Add an Accept header for JSON format.
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                if (string.IsNullOrEmpty(baseAddress))
-                {
-                    client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
-                }
-                else
-                {
-                    client.BaseAddress = new Uri(baseAddress);
-                }
 
+                client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
                 try
                 {
                     if (cancelTime == 0)
@@ -90,7 +83,65 @@ namespace Core.Common
                 }
                 else
                 {
-                    if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && string.IsNullOrWhiteSpace(baseAddress))
+                    if (httpResponse.StatusCode == HttpStatusCode.InternalServerError)
+                    {
+                        //throw new Exception(httpResponse.Content.ReadAsStringAsync().Result);
+                        throw new Exception(httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+                    }
+                }
+            }
+            return result;
+
+        }
+
+
+        public override TResult ExecuteServiceGetRequest<TResult>(string apiUrl, int cancelTime = 0)
+        {
+            TResult result = default(TResult);
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
+
+            using (var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true
+            })
+
+            using (HttpClient client = new HttpClient(handler))
+            {
+                // Add an Accept header for JSON format.
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+               
+                    client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
+               
+                try
+                {
+                    if (cancelTime == 0)
+                    {
+                        httpResponse = client.GetAsync(apiUrl).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        CancellationTokenSource ca = new CancellationTokenSource();
+                        ca.CancelAfter(cancelTime * 1000);
+                        httpResponse = client.GetAsync(apiUrl, ca.Token).GetAwaiter().GetResult();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+
+                if (httpResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    result = httpResponse.Content.ReadAsAsync<TResult>().GetAwaiter().GetResult();
+                }
+                else if (httpResponse.StatusCode == HttpStatusCode.NotAcceptable)
+                {
+                    //result = httpResponse.Content.ReadAsAsync<TResult>().Result;
+                    result = httpResponse.Content.ReadAsAsync<TResult>().GetAwaiter().GetResult();
+                }
+                else
+                {
+                    if (httpResponse.StatusCode == HttpStatusCode.InternalServerError )
                     {
                         //throw new Exception(httpResponse.Content.ReadAsStringAsync().Result);
                         throw new Exception(httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult());

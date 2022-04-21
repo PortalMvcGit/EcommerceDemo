@@ -10,3 +10,15 @@ D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.
 D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.csproj.CopyComplete
 D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
 D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.deps.json
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Model.dll
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Model.pdb
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.csprojAssemblyReference.cache
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.AssemblyInfoInputs.cache
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.AssemblyInfo.cs
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.csproj.CoreCompileInputs.cache
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.csproj.CopyComplete
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
+D:\Project\EcommerceDemo\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb

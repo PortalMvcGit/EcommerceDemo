@@ -5640,26 +5640,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\akbaripa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Parth Akbari\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Test\\EcommerceDemo.Service\\EcommerceDemo.Service.csproj",
+      "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Service\\EcommerceDemo.Service.csproj",
       "projectName": "EcommerceDemo.Service",
-      "projectPath": "D:\\Test\\EcommerceDemo.Service\\EcommerceDemo.Service.csproj",
-      "packagesPath": "C:\\Users\\akbaripa\\.nuget\\packages\\",
-      "outputPath": "D:\\Test\\EcommerceDemo.Service\\obj\\",
+      "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Service\\EcommerceDemo.Service.csproj",
+      "packagesPath": "C:\\Users\\Parth Akbari\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Service\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\akbaripa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Parth Akbari\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5673,8 +5666,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
-              "projectPath": "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj"
+            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
+              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj"
             }
           }
         }
@@ -5706,7 +5699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
