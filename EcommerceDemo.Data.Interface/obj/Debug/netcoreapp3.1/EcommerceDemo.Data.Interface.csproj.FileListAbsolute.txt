@@ -1,0 +1,8 @@
+D:\Test\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.deps.json
+D:\Test\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
+D:\Test\EcommerceDemo.Data.Interface\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb
+D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.AssemblyInfoInputs.cache
+D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.AssemblyInfo.cs
+D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.csproj.CoreCompileInputs.cache
+D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
+D:\Test\EcommerceDemo.Data.Interface\obj\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb
