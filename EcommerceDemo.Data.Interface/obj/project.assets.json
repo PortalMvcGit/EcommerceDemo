@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "EcommerceDemo.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/EcommerceDemo.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcommerceDemo.Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "EcommerceDemo.Model/1.0.0": {
+      "type": "project",
+      "path": "../EcommerceDemo.Model/EcommerceDemo.Model.csproj",
+      "msbuildProject": "../EcommerceDemo.Model/EcommerceDemo.Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "EcommerceDemo.Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\akbaripa\\.nuget\\packages\\": {},
@@ -40,7 +59,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Test\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
+              "projectPath": "D:\\Test\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

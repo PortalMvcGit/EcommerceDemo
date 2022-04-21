@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EcommerceDemo.Data;
+using EcommerceDemo.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,8 @@ namespace EcommerceDemo.Service.Controllers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
+        private readonly IConfiguration _config;
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,9 +23,10 @@ namespace EcommerceDemo.Service.Controllers
 
         private readonly ILogger<ProductController> _logger;
 
-        public ProductController(ILogger<ProductController> logger)
+        public ProductController(ILogger<ProductController> logger,IConfiguration configuration)
         {
             _logger = logger;
+            _config = configuration;
         }
 
         [HttpGet]
@@ -39,6 +45,10 @@ namespace EcommerceDemo.Service.Controllers
         [HttpPost]
         public string ProductList([FromBody] string test)
         {
+            ProductRepository productRepository = new ProductRepository(_config);
+            Product product = new Product();
+            productRepository.List(product);
+
             return "APi Later";
         }
 
