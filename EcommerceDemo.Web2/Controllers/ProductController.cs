@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Common;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace EcommerceDemo.Web.Controllers
 {
@@ -19,16 +20,19 @@ namespace EcommerceDemo.Web.Controllers
 
         private readonly ServiceHelperWebApi _serviceHelperWebApi;
 
-        public ProductController(ILogger<ProductController> logger, IHttpContextAccessor contextAccessor)
+        private readonly IConfiguration _config;
+
+        public ProductController(ILogger<ProductController> logger, IHttpContextAccessor contextAccessor, IConfiguration config)
         {
             _logger = logger;
             _httpContextAccessor = contextAccessor;
-            _serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor);
+            _config = config;
+            _serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor, config);
         }
 
         public IActionResult Index()
         {
-            _serviceHelperWebApi.ExecuteServiceRequest<string, string>("Product", "Test",string.Empty);
+            _serviceHelperWebApi.ExecuteServiceRequest<string, string>("Product", "Test", string.Empty);
             return View();
         }
 

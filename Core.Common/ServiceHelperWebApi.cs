@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -16,13 +17,16 @@ namespace Core.Common
         /// </summary> 
         private IHttpContextAccessor _contextAccessor;
 
+        private IConfiguration _config;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="contextAccessor"></param>
-        public ServiceHelperWebApi(IHttpContextAccessor contextAccessor)
+        public ServiceHelperWebApi(IHttpContextAccessor contextAccessor, IConfiguration config)
         {
             _contextAccessor = contextAccessor;
+            _config = config;
         }
 
         /// <summary>
@@ -49,7 +53,7 @@ namespace Core.Common
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 if (string.IsNullOrEmpty(baseAddress))
                 {
-                    client.BaseAddress = new Uri("http://localhost:13381/");
+                    client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
                 }
                 else
                 {
