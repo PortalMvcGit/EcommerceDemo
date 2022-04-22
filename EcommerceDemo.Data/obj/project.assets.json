@@ -5618,23 +5618,31 @@
     ".NETCoreApp,Version=v3.1": [
       "Core.Common >= 1.0.0",
       "EcommerceDemo.Data.Interface >= 1.0.0",
+      "Microsoft.Extensions.Configuration >= 6.0.1",
       "System.Data.SqlClient >= 4.8.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Parth Akbari\\.nuget\\packages\\": {}
+    "C:\\Users\\akbaripa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
+      "projectUniqueName": "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
       "projectName": "EcommerceDemo.Data",
-      "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
-      "packagesPath": "C:\\Users\\Parth Akbari\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\obj\\",
+      "projectPath": "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
+      "packagesPath": "C:\\Users\\akbaripa\\.nuget\\packages\\",
+      "outputPath": "D:\\Test\\EcommerceDemo.Data\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Parth Akbari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\akbaripa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5648,11 +5656,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj": {
-              "projectPath": "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj"
+            "D:\\Test\\Core.Common\\Core.Common.csproj": {
+              "projectPath": "D:\\Test\\Core.Common\\Core.Common.csproj"
             },
-            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
+            "D:\\Test\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
+              "projectPath": "D:\\Test\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
             }
           }
         }
@@ -5667,6 +5675,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.3, )"
@@ -5687,7 +5699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

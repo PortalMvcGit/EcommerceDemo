@@ -27,6 +27,9 @@ namespace EcommerceDemo.Data
             string serializedMyObjects = string.Empty;
             DbDataReader dbDataReader = base.GetDataReader("sp_GetProductList", test);
             Product product1;
+
+            List<ProductCategory> productCategorylist = new List<ProductCategory>();
+            
             List<Product> products = new List<Product>();
             while (dbDataReader.Read())
             {
@@ -34,9 +37,10 @@ namespace EcommerceDemo.Data
                 product1.ProdDescription = dbDataReader["ProdDescription"].ToString();
                 product1.ProdName = dbDataReader["ProdName"].ToString();
                 product1.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);
+                product1.ProdCatId = Convert.ToInt32(dbDataReader["ProdCatId"]);
+                product1.CategoryName = dbDataReader["CategoryName"].ToString();
                 products.Add(product1);
-            }
-
+            }            
             return products;
         }
 

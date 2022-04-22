@@ -33,8 +33,9 @@ namespace EcommerceDemo.Web.Controllers
 
         public IActionResult Index()
         {
-            List<Product>  listProduct = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("Product");
-            return View();
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.products = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("Product");
+            return View(productViewModel);
         }
 
         public IActionResult Privacy()

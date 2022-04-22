@@ -1,8 +1,59 @@
-﻿@{
+﻿@using System.Collections.Generic;
+@using EcommerceDemo.Model;
+@inject IJsonHelper Json;
+@model ProductViewModel;
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    Product product = new Product();
+    var productCategories = Model.products.Select(x => new { x.CategoryName, x.ProdCatId });
+}
+
+<p>
+    <a asp-action="CreateAgentMaster">Create New</a>
+</p>
+<p>
+    @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
+</p>
+
+<div class="tableFixHead">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Product Description
+                </th>
+                <th>
+                    Operation
+                </th>
+            </tr>
+        </thead>
+        <tbody id="ProductList">
+            @foreach (var item in Model.products.Where(x => x.ProductId == 1))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+<script type="text/javascript">
+    var PorudctList = @Html.Raw(Json.Serialize(Model.products));
+</script>

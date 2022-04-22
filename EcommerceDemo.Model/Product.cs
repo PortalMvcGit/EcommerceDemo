@@ -8,19 +8,15 @@ namespace EcommerceDemo.Model
         public int ProdCatId { get; set; }
 
         public string CategoryName { get; set; }
-
-        public List<Product> productList { get; set; }
     }
 
-    public class Product
+    public class Product : ProductCategory
     {
         public int ProductId { get; set; }
 
         public string ProdDescription { get; set; }
 
         public string ProdName { get; set; }
+
     }
-
-
-
 }

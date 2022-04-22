@@ -76,6 +76,9 @@ StyleCopReport.xml
 *.cache
 *.dll
 /build/
+/obj/
+*/obj/*
+*\obj
 *.ilk
 *.meta
 *.obj
