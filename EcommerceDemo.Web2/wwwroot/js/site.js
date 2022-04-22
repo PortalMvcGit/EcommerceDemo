@@ -15,5 +15,10 @@
         $("#ProductList").html(tr);
 
     });
+    $("#productCreateArea").hide();
+    $("#Createproduct").on('click', function HideProductList() {
+        $("#productListArea,#Createproduct").hide();
+        $("#productCreateArea").show();
+    });
 
 });

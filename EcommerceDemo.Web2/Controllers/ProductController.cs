@@ -38,6 +38,11 @@ namespace EcommerceDemo.Web.Controllers
             return View(productViewModel);
         }
 
+        public IActionResult Create()
+        {
+            return View("~/Views/Product/_Create.cshtml");
+        }
+
         public IActionResult Privacy()
         {
             return View();

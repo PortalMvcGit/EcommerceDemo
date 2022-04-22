@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Data.Interfac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Data", "..\EcommerceDemo.Data\EcommerceDemo.Data.csproj", "{B941DF10-E8A8-4E54-B57B-3149E200DB4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "..\Core.Common\Core.Common.csproj", "{7B4D1B7F-1EDC-4B39-86D6-4BD6845CABFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Common", "..\Core.Common\Core.Common.csproj", "{7B4D1B7F-1EDC-4B39-86D6-4BD6845CABFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Web", "..\EcommerceDemo.Web2\EcommerceDemo.Web.csproj", "{62AE8ABB-3886-4EED-8251-6A4F26D47593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Web", "..\EcommerceDemo.Web2\EcommerceDemo.Web.csproj", "{62AE8ABB-3886-4EED-8251-6A4F26D47593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceDemo.Model", "..\EcommerceDemo.Model\EcommerceDemo.Model.csproj", "{C1C89E7F-8CE8-4466-BAC6-A1D4C714C7BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Model", "..\EcommerceDemo.Model\EcommerceDemo.Model.csproj", "{C1C89E7F-8CE8-4466-BAC6-A1D4C714C7BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,47 +11,54 @@
     var productCategories = Model.products.Select(x => new { x.CategoryName, x.ProdCatId });
 }
 
-<p>
-    <a asp-action="CreateAgentMaster">Create New</a>
-</p>
-<p>
-    @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
+<p id="Createproduct">
+    <b>Create New</b>
 </p>
 
-<div class="tableFixHead">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Product Name
-                </th>
-                <th>
-                    Product Description
-                </th>
-                <th>
-                    Operation
-                </th>
-            </tr>
-        </thead>
-        <tbody id="ProductList">
-            @foreach (var item in Model.products.Where(x => x.ProductId == 1))
-            {
+<div id="productListArea">
+    <p>
+        @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
+    </p>
+
+    <div class="tableFixHead">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProdName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProdDescription)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                    </td>
+                    <th>
+                        Product Name
+                    </th>
+                    <th>
+                        Product Description
+                    </th>
+                    <th>
+                        Operation
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="ProductList">
+                @foreach (var item in Model.products.Where(x => x.ProductId == 1))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdDescription)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="productCreateArea">
+    @Html.Partial("~/Views/Product/_Create.cshtml", Model)
 </div>
 
 <script type="text/javascript">
