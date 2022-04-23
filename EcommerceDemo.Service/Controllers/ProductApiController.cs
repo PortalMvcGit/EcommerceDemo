@@ -60,8 +60,7 @@ namespace EcommerceDemo.Service.Controllers
         [Route("CreateProduct")]
         public int CreateProduct([FromBody] Product product)
         {
-            _productManager.Create(product);
-            return 1;
+            return _productManager.Create(product);
         }
 
     }

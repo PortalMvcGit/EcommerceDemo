@@ -40,8 +40,7 @@ namespace EcommerceDemo.Business
         /// <returns></returns>
         public int Create(Product product)
         {
-            _productRepo.Insert(product);
-            return 1;
+            return _productRepo.Insert(product);
         }
 
     }

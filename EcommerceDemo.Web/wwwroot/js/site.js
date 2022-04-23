@@ -3,7 +3,7 @@
     $("#ProdCatId").on('change', function GetProductByCate(e) {
 
         var tr = '';
-        $.each(PorudctList, function (index, item) {
+        $.each(ProudctList, function (index, item) {
             if (item.prodCatId == e.currentTarget.value) {
                 tr += '<tr>';
                 tr += '<td>' + item.prodName + '</td>';

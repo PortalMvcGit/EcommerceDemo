@@ -82,11 +82,5 @@ namespace EcommerceDemo.Web.Controllers
             }
                 return Json(new object());
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
     }
 }
