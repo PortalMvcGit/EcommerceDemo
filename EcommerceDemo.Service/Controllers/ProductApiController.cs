@@ -12,13 +12,13 @@ namespace EcommerceDemo.Service.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductApiController : ControllerBase
     {
         private readonly IConfiguration _config;
 
-        private readonly ILogger<ProductController> _logger;
+        private readonly ILogger<ProductApiController> _logger;
 
-        public ProductController(ILogger<ProductController> logger,IConfiguration configuration)
+        public ProductApiController(ILogger<ProductApiController> logger,IConfiguration configuration)
         {
             _logger = logger;
             _config = configuration;

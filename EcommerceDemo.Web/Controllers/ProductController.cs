@@ -23,6 +23,12 @@ namespace EcommerceDemo.Web.Controllers
 
         private readonly IConfiguration _config;
 
+        /// <summary>
+        /// Initialize the Controller 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="contextAccessor"></param>
+        /// <param name="config"></param>
         public ProductController(ILogger<ProductController> logger, IHttpContextAccessor contextAccessor, IConfiguration config)
         {
             _logger = logger;
@@ -31,20 +37,24 @@ namespace EcommerceDemo.Web.Controllers
             _serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor, config);
         }
 
+        /// <summary>
+        /// Show the first page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             ProductViewModel productViewModel = new ProductViewModel();
-            productViewModel.products = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("Product");
+            productViewModel.products = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("ProductApi");
             return View(productViewModel);
         }
 
-        public IActionResult Create()
-        {
-            return View("~/Views/Product/_Create.cshtml");
-        }
-
+        /// <summary>
+        /// Create New Product
+        /// </summary>
+        /// <param name="productViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public JsonResult CreateProduct(ProductViewModel productViewModel)
         {
             if (ModelState.IsValid)
