@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.AspNet.WebApi.Client/5.2.8": {
         "type": "package",
         "dependencies": {
@@ -1561,7 +1561,7 @@
       },
       "Core.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.8",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -1580,7 +1580,7 @@
       },
       "EcommerceDemo.Data.Interface/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "EcommerceDemo.Model": "1.0.0"
         },
@@ -1593,7 +1593,7 @@
       },
       "EcommerceDemo.Model/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/EcommerceDemo.Model.dll": {}
         },
@@ -5615,7 +5615,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Core.Common >= 1.0.0",
       "EcommerceDemo.Data.Interface >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 6.0.1",
@@ -5623,44 +5623,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\akbaripa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Parth Akbari\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
+      "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
       "projectName": "EcommerceDemo.Data",
-      "projectPath": "D:\\Test\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
-      "packagesPath": "C:\\Users\\akbaripa\\.nuget\\packages\\",
-      "outputPath": "D:\\Test\\EcommerceDemo.Data\\obj\\",
+      "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj",
+      "packagesPath": "C:\\Users\\Parth Akbari\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\akbaripa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Parth Akbari\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Test\\Core.Common\\Core.Common.csproj": {
-              "projectPath": "D:\\Test\\Core.Common\\Core.Common.csproj"
+            "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj": {
+              "projectPath": "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj"
             },
-            "D:\\Test\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-              "projectPath": "D:\\Test\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
+            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
+              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
             }
           }
         }
@@ -5672,8 +5665,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
@@ -5699,7 +5692,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

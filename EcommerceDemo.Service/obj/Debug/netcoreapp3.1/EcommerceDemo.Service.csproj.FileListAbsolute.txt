@@ -24,9 +24,9 @@ D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\Ecommerce
 D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.dll
 D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Model.dll
 D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.pdb
+D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Model.pdb
 D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\Core.Common.pdb
 D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Data.Interface.pdb
-D:\Project\EcommerceDemo\EcommerceDemo.Service\bin\Debug\netcoreapp3.1\EcommerceDemo.Model.pdb
 D:\Project\EcommerceDemo\EcommerceDemo.Service\obj\Debug\netcoreapp3.1\EcommerceDemo.Service.csprojAssemblyReference.cache
 D:\Project\EcommerceDemo\EcommerceDemo.Service\obj\Debug\netcoreapp3.1\EcommerceDemo.Service.AssemblyInfoInputs.cache
 D:\Project\EcommerceDemo\EcommerceDemo.Service\obj\Debug\netcoreapp3.1\EcommerceDemo.Service.AssemblyInfo.cs

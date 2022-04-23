@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Data", "..\Ec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Common", "..\Core.Common\Core.Common.csproj", "{7B4D1B7F-1EDC-4B39-86D6-4BD6845CABFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Web", "..\EcommerceDemo.Web2\EcommerceDemo.Web.csproj", "{62AE8ABB-3886-4EED-8251-6A4F26D47593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Web", "..\EcommerceDemo.Web\EcommerceDemo.Web.csproj", "{62AE8ABB-3886-4EED-8251-6A4F26D47593}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcommerceDemo.Model", "..\EcommerceDemo.Model\EcommerceDemo.Model.csproj", "{C1C89E7F-8CE8-4466-BAC6-A1D4C714C7BD}"
 EndProject

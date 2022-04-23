@@ -11,15 +11,15 @@ namespace EcommerceDemo.Model
         public int ProductId { get; set; }
 
         [Display(Name = "Product Description")]
-        [Required]
+        [Required(ErrorMessage = "Please Enter Product Description")]
         public string ProdDescription { get; set; }
 
         [Display(Name = "Product Name")]
-        [Required]
+        [Required(ErrorMessage = "Please Enter Product Name")]
         public string ProdName { get; set; }
 
         [Display(Name = "Product Category")]
-        [Required]
+        [Required(ErrorMessage = "Please Enter Product Category")]
         public int ProdCatId { get; set; }
     }
 }
