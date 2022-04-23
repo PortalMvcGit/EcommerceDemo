@@ -88,14 +88,14 @@
         }
       }
     },
-    "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
+    "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj",
-        "projectName": "EcommerceDemo.Data.Interface",
-        "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj",
+        "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj",
+        "projectName": "EcommerceDemo.Business",
+        "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj",
         "packagesPath": "C:\\Users\\Parth Akbari\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\obj\\",
+        "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Parth Akbari\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -112,8 +112,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
-                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
+              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
+                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj"
               }
             }
           }
@@ -173,8 +173,8 @@
               "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj": {
                 "projectPath": "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj"
               },
-              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
+              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
+                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
               }
             }
           }
@@ -295,8 +295,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
-                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj"
+              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj": {
+                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj"
               },
               "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
                 "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"

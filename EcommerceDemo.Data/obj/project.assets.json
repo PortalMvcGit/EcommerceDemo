@@ -1578,19 +1578,6 @@
           "bin/placeholder/Core.Common.dll": {}
         }
       },
-      "EcommerceDemo.Data.Interface/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "EcommerceDemo.Model": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/EcommerceDemo.Data.Interface.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EcommerceDemo.Data.Interface.dll": {}
-        }
-      },
       "EcommerceDemo.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -5603,11 +5590,6 @@
       "path": "../Core.Common/Core.Common.csproj",
       "msbuildProject": "../Core.Common/Core.Common.csproj"
     },
-    "EcommerceDemo.Data.Interface/1.0.0": {
-      "type": "project",
-      "path": "../EcommerceDemo.Data.Interface/EcommerceDemo.Data.Interface.csproj",
-      "msbuildProject": "../EcommerceDemo.Data.Interface/EcommerceDemo.Data.Interface.csproj"
-    },
     "EcommerceDemo.Model/1.0.0": {
       "type": "project",
       "path": "../EcommerceDemo.Model/EcommerceDemo.Model.csproj",
@@ -5617,7 +5599,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Core.Common >= 1.0.0",
-      "EcommerceDemo.Data.Interface >= 1.0.0",
+      "EcommerceDemo.Model >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 6.0.1",
       "System.Data.SqlClient >= 4.8.3"
     ]
@@ -5652,8 +5634,8 @@
             "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj": {
               "projectPath": "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj"
             },
-            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
+            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
+              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
             }
           }
         }

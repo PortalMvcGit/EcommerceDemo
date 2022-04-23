@@ -31,6 +31,7 @@ namespace EcommerceDemo.Web2
             services.AddMvcCore()
                 .AddDataAnnotations()// for model validation
                 .AddApiExplorer(); // for Swagger
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//Configure AutoMapper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

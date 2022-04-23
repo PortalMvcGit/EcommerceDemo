@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj" />
-    <ProjectReference Include="..\EcommerceDemo.Data.Interface\EcommerceDemo.Data.Interface.csproj" />
+    <ProjectReference Include="..\EcommerceDemo.Model\EcommerceDemo.Model.csproj" />
   </ItemGroup>
 
 </Project>

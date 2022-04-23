@@ -8,33 +8,33 @@ using System.Text;
 
 namespace Core.Common
 {
-    public class BaseDataAccess
+    public static class BaseDataAccess
     {
-        public string ConnectionString { get; set; }
+        public static string ConnectionString { get; set; }
 
-        public SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
-            SqlConnection connection = new SqlConnection(this.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
             if (connection.State != ConnectionState.Open)
                 connection.Open();
             return connection;
         }
 
-        public DbCommand GetCommand(DbConnection connection, string commandText, CommandType commandType)
+        public static DbCommand GetCommand(DbConnection connection, string commandText, CommandType commandType)
         {
             SqlCommand command = new SqlCommand(commandText, connection as SqlConnection);
             command.CommandType = commandType;
             return command;
         }
 
-        public SqlParameter GetParameter(string parameter, object value)
+        public static SqlParameter GetParameter(string parameter, object value)
         {
             SqlParameter parameterObject = new SqlParameter(parameter, value != null ? value : DBNull.Value);
             parameterObject.Direction = ParameterDirection.Input;
             return parameterObject;
         }
 
-        public SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)
+        public static SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)
         {
             SqlParameter parameterObject = new SqlParameter(parameter, type); ;
 
@@ -57,15 +57,15 @@ namespace Core.Common
             return parameterObject;
         }
 
-        public int ExecuteNonQuery(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
+        public static int ExecuteNonQuery(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
         {
             int returnValue = -1;
 
             try
             {
-                using (SqlConnection connection = this.GetConnection())
+                using (SqlConnection connection = BaseDataAccess.GetConnection())
                 {
-                    DbCommand cmd = this.GetCommand(connection, procedureName, commandType);
+                    DbCommand cmd = BaseDataAccess.GetCommand(connection, procedureName, commandType);
 
                     if (parameters != null && parameters.Count > 0)
                     {
@@ -84,15 +84,15 @@ namespace Core.Common
             return returnValue;
         }
 
-        public object ExecuteScalar(string procedureName, List<SqlParameter> parameters)
+        public static object ExecuteScalar(string procedureName, List<SqlParameter> parameters)
         {
             object returnValue = null;
 
             try
             {
-                using (DbConnection connection = this.GetConnection())
+                using (DbConnection connection = BaseDataAccess.GetConnection())
                 {
-                    DbCommand cmd = this.GetCommand(connection, procedureName, CommandType.StoredProcedure);
+                    DbCommand cmd = BaseDataAccess.GetCommand(connection, procedureName, CommandType.StoredProcedure);
 
                     if (parameters != null && parameters.Count > 0)
                     {
@@ -111,26 +111,21 @@ namespace Core.Common
             return returnValue;
         }
 
-        public DbDataReader GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
+        public static DbDataReader GetDataReader(string procedureName, List<DbParameter> parameters, CommandType commandType = CommandType.StoredProcedure)
         {
             DbDataReader ds;
             DataTable table = new DataTable();
             try
             {
-                DbConnection connection = this.GetConnection();
+                DbConnection connection = BaseDataAccess.GetConnection();
                 {
-                    DbCommand cmd = this.GetCommand(connection, procedureName, commandType);
+                    DbCommand cmd = BaseDataAccess.GetCommand(connection, procedureName, commandType);
                     if (parameters != null && parameters.Count > 0)
                     {
                         cmd.Parameters.AddRange(parameters.ToArray());
                     }
 
                     ds = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    //if (ds.FieldCount > 0)
-                    //{
-                    //    table.Load(ds);
-                    //}
-
                 }
             }
             catch (Exception ex)

@@ -1,35 +1,60 @@
 ﻿using Core.Common;
-using EcommerceDemo.Data.Interface;
 using EcommerceDemo.Model;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.Collections.Generic;
-using System.Data;
-using Newtonsoft.Json;
+using System.Data.Common;
 
 namespace EcommerceDemo.Data
 {
-    public class ProductRepository : BaseDataAccess
+    public class ProductRepository : IProductRepository
     {
-
-
+        /// <summary>
+        /// Inilize Product Repository
+        /// </summary>
+        /// <param name="configuration"></param>
         public ProductRepository(IConfiguration configuration)
         {
-            base.ConnectionString = configuration["AppSettings:ConnectionString"];
+            BaseDataAccess.ConnectionString = configuration["AppSettings:ConnectionString"];
         }
 
-        public List<Product> List(Product product)
+        /// <summary>
+        /// Insert Product
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Insert(Product entity)
         {
-            List<DbParameter> test = new List<DbParameter>();
+            throw new NotImplementedException();
+        }
 
-            string serializedMyObjects = string.Empty;
-            DbDataReader dbDataReader = base.GetDataReader("sp_GetProductList", test);
+        /// <summary>
+        /// Delete Product Base id
+        /// </summary>
+        /// <param name="entity"></param>
+        public void Delete(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get Product by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Product GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get Product
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetAll()
+        {
+
+            DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetProductList", null);
             Product product1;
-
-            List<ProductCategory> productCategorylist = new List<ProductCategory>();
-            
             List<Product> products = new List<Product>();
             while (dbDataReader.Read())
             {
@@ -40,23 +65,9 @@ namespace EcommerceDemo.Data
                 product1.ProdCatId = Convert.ToInt32(dbDataReader["ProdCatId"]);
                 product1.CategoryName = dbDataReader["CategoryName"].ToString();
                 products.Add(product1);
-            }            
+            }
             return products;
         }
 
-        public string Add(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Delete(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Update(Product product)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

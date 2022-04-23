@@ -88,64 +88,6 @@
         }
       }
     },
-    "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj",
-        "projectName": "EcommerceDemo.Data.Interface",
-        "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj",
-        "packagesPath": "C:\\Users\\Parth Akbari\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Parth Akbari\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
-                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -173,8 +115,8 @@
               "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj": {
                 "projectPath": "D:\\Project\\EcommerceDemo\\Core.Common\\Core.Common.csproj"
               },
-              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj": {
-                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data.Interface\\EcommerceDemo.Data.Interface.csproj"
+              "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
+                "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
               }
             }
           }

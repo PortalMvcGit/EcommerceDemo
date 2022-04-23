@@ -3,7 +3,7 @@ https://udemyfreecourse9.blogspot.com/2021/02/build-app-with-aspnet-core-and-ang
 https://social.technet.microsoft.com/wiki/contents/articles/35974.exploring-net-core-net-core-1-0-connecting-sql-server-database.aspx
 
 https://stackoverflow.com/questions/43825626/how-to-connect-to-sql-server-from-net-core-without-using-entity-framework
-
+https://codereview.stackexchange.com/questions/177588/generic-repository-without-entity-framework
 Select * from Product P 
 left Join ProductAttribute PA 
 on P.ProductId = PA.ProductId

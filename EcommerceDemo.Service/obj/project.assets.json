@@ -1578,12 +1578,25 @@
           "bin/placeholder/Core.Common.dll": {}
         }
       },
+      "EcommerceDemo.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "EcommerceDemo.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EcommerceDemo.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcommerceDemo.Business.dll": {}
+        }
+      },
       "EcommerceDemo.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Core.Common": "1.0.0",
-          "EcommerceDemo.Data.Interface": "1.0.0",
+          "EcommerceDemo.Model": "1.0.0",
           "Microsoft.Extensions.Configuration": "6.0.1",
           "System.Data.SqlClient": "4.8.3"
         },
@@ -1592,19 +1605,6 @@
         },
         "runtime": {
           "bin/placeholder/EcommerceDemo.Data.dll": {}
-        }
-      },
-      "EcommerceDemo.Data.Interface/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "EcommerceDemo.Model": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/EcommerceDemo.Data.Interface.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EcommerceDemo.Data.Interface.dll": {}
         }
       },
       "EcommerceDemo.Model/1.0.0": {
@@ -5619,15 +5619,15 @@
       "path": "../Core.Common/Core.Common.csproj",
       "msbuildProject": "../Core.Common/Core.Common.csproj"
     },
+    "EcommerceDemo.Business/1.0.0": {
+      "type": "project",
+      "path": "../EcommerceDemo.Business/EcommerceDemo.Business.csproj",
+      "msbuildProject": "../EcommerceDemo.Business/EcommerceDemo.Business.csproj"
+    },
     "EcommerceDemo.Data/1.0.0": {
       "type": "project",
       "path": "../EcommerceDemo.Data/EcommerceDemo.Data.csproj",
       "msbuildProject": "../EcommerceDemo.Data/EcommerceDemo.Data.csproj"
-    },
-    "EcommerceDemo.Data.Interface/1.0.0": {
-      "type": "project",
-      "path": "../EcommerceDemo.Data.Interface/EcommerceDemo.Data.Interface.csproj",
-      "msbuildProject": "../EcommerceDemo.Data.Interface/EcommerceDemo.Data.Interface.csproj"
     },
     "EcommerceDemo.Model/1.0.0": {
       "type": "project",
@@ -5637,7 +5637,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "EcommerceDemo.Data >= 1.0.0",
+      "EcommerceDemo.Business >= 1.0.0",
       "EcommerceDemo.Model >= 1.0.0"
     ]
   },
@@ -5668,8 +5668,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj": {
-              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Data\\EcommerceDemo.Data.csproj"
+            "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj": {
+              "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Business\\EcommerceDemo.Business.csproj"
             },
             "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj": {
               "projectPath": "D:\\Project\\EcommerceDemo\\EcommerceDemo.Model\\EcommerceDemo.Model.csproj"
