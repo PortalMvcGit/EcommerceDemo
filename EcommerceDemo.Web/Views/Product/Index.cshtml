@@ -8,7 +8,7 @@
 
 @{
     Product product = new Product();
-    var productCategories = Model.products.Select(x => new { x.CategoryName, x.ProdCatId });
+    var productCategories = Model.products.Select(c => new { c.CategoryName, c.ProdCatId }).Distinct();
 }
 
 <p id="Createproduct">
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody id="ProductList">
-                @foreach (var item in Model.products.Where(x => x.ProductId == 1))
+                @foreach (var item in Model.products.Where(x => x.ProdCatId == 1))
                 {
                     <tr>
                         <td>

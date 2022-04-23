@@ -34,5 +34,15 @@ namespace EcommerceDemo.Business
             return _productRepo.GetAll();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int Create(Product product)
+        {
+            _productRepo.Insert(product);
+            return 1;
+        }
+
     }
 }

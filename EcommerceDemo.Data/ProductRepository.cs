@@ -24,7 +24,13 @@ namespace EcommerceDemo.Data
         /// <param name="entity"></param>
         public void Insert(Product entity)
         {
-            throw new NotImplementedException();
+            List<DbParameter> parameters = new List<DbParameter>();
+            parameters.Add(BaseDataAccess.GetParameter("@prodDescription", entity.ProdDescription));
+            parameters.Add(BaseDataAccess.GetParameter("@prodName", entity.ProdName));
+            parameters.Add(BaseDataAccess.GetParameter("@prodCatId", entity.ProdCatId));
+            parameters.Add(BaseDataAccess.GetParameterOut("@id", System.Data.SqlDbType.Int));
+            int check = BaseDataAccess.ExecuteNonQuery("sp_CreateProduct", parameters);
+          
         }
 
         /// <summary>
@@ -52,13 +58,11 @@ namespace EcommerceDemo.Data
         /// <returns></returns>
         public List<Product> GetAll()
         {
-
             DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetProductList", null);
-            Product product1;
             List<Product> products = new List<Product>();
             while (dbDataReader.Read())
             {
-                product1 = new Product();
+                Product product1 = new Product();
                 product1.ProdDescription = dbDataReader["ProdDescription"].ToString();
                 product1.ProdName = dbDataReader["ProdName"].ToString();
                 product1.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);

@@ -266,3 +266,36 @@ AS
 left join ProductCategory pc
 on pc.ProdCatId = p.ProdCatId;
 
+
+
+
+
+
+
+
+
+
+
+
+USE [ECommerceDemo]
+GO
+
+/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 23-04-2022 10:14:05 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER PROCEDURE [dbo].[sp_CreateProduct]
+	@prodDescription varchar(max),
+	@prodName varchar(250),
+	@prodCatId int,
+	@id int output
+AS
+	Insert into Product (ProdCatId,ProdName,ProdDescription) values(@prodCatId,@prodName,@prodDescription);
+	set @id = SCOPE_IDENTITY();
+RETURN @id
+
+
