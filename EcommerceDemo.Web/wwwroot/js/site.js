@@ -29,7 +29,10 @@
                 tr += '</tr>';
 
                 $.each(item.attributeNameList, function (index, attrName) {
-                    th += '<th>' + attrName + '</th>';
+                    if (th.indexOf(attrName) == -1) {
+                        th += '<th>' + attrName + '</th>';
+                    }
+                    
                 });
             }
         });

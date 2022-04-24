@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
 using System.Text;
 
 namespace Core.Common
@@ -31,7 +33,37 @@ namespace Core.Common
         {
             SqlParameter parameterObject = new SqlParameter(parameter, value != null ? value : DBNull.Value);
             parameterObject.Direction = ParameterDirection.Input;
+            if (value is Dictionary<int, string>)
+            {
+                parameterObject.SqlDbType = SqlDbType.Structured;
+                parameterObject.TypeName = "dbo.ProdAttrDictionary";
+                parameterObject.Value = SendRows((Dictionary<int, string>)value);
+            }
             return parameterObject;
+        }
+
+        private static IEnumerable<SqlDataRecord> SendRows(Dictionary<int, string> RowData)
+        {
+            SqlMetaData[] _TvpSchema = new SqlMetaData[] {
+      new SqlMetaData("ID", SqlDbType.Int),
+      new SqlMetaData("ProdAttr", SqlDbType.NVarChar,300)
+   };
+            SqlDataRecord _DataRecord = new SqlDataRecord(_TvpSchema);
+            StreamReader _FileReader = null;
+
+            // read a row, send a row
+            foreach (var _CurrentRow in RowData)
+            {
+                // You shouldn't need to call "_DataRecord = new SqlDataRecord" as
+                // SQL Server already received the row when "yield return" was called.
+                // Unlike BCP and BULK INSERT, you have the option here to create an
+                // object, do manipulation(s) / validation(s) on the object, then pass
+                // the object to the DB or discard via "continue" if invalid.
+                _DataRecord.SetInt32(0, _CurrentRow.Key);
+                _DataRecord.SetString(1, _CurrentRow.Value.ToString());
+
+                yield return _DataRecord;
+            }
         }
 
         public static SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)

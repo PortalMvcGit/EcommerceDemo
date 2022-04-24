@@ -11,7 +11,7 @@
     {
         foreach (var att in item.attributeNameList)
         {
-            MasterattributeNameList.Add(att.Key, att.Value);
+            MasterattributeNameList.TryAdd(att.Key, att.Value);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace EcommerceDemo.Data
             parameters.Add(BaseDataAccess.GetParameter("@prodDescription", entity.ProdDescription));
             parameters.Add(BaseDataAccess.GetParameter("@prodName", entity.ProdName));
             parameters.Add(BaseDataAccess.GetParameter("@prodCatId", entity.ProdCatId));
+            parameters.Add(BaseDataAccess.GetParameter("@Attrvalue", entity.attributeValueList));
             parameters.Add(BaseDataAccess.GetParameterOut("@id", System.Data.SqlDbType.Int));
             int check = BaseDataAccess.ExecuteNonQuery("sp_CreateProduct", parameters);
             return check;

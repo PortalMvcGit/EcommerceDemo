@@ -4,6 +4,7 @@ https://social.technet.microsoft.com/wiki/contents/articles/35974.exploring-net-
 
 https://stackoverflow.com/questions/43825626/how-to-connect-to-sql-server-from-net-core-without-using-entity-framework
 https://codereview.stackexchange.com/questions/177588/generic-repository-without-entity-framework
+https://jike.in/qa/?qa=433709/&show=433710
 Select * from Product P 
 left Join ProductAttribute PA 
 on P.ProductId = PA.ProductId
@@ -233,7 +234,7 @@ GO
 USE [ECommerceDemo]
 GO
 
-/****** Object: SqlProcedure [dbo].[sp_GetProductList] Script Date: 21-04-2022 10.39.31 PM ******/
+/****** Object: SqlProcedure [dbo].[sp_GetProductList] Script Date: 24-04-2022 10:22:05 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -241,20 +242,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_GetProductList]
-AS
-	Select * from Product P;
-	
-	--------------------------------------------
-USE [ECommerceDemo]
-GO
 
-/****** Object: SqlProcedure [dbo].[sp_GetProductList] Script Date: 22-04-2022 12:42:47 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 
 
@@ -263,9 +251,12 @@ GO
 ALTER PROCEDURE [dbo].[sp_GetProductList]
 AS
 	Select * from Product P 
+left Join ProductAttribute PA 
+on P.ProductId = PA.ProductId
+left Join ProductAttributeLookup PL
+On PL.AttributeId = PA.AttributeId
 left join ProductCategory pc
-on pc.ProdCatId = p.ProdCatId;
-
+on pc.ProdCatId = p.ProdCatId
 
 
 
@@ -280,7 +271,7 @@ on pc.ProdCatId = p.ProdCatId;
 USE [ECommerceDemo]
 GO
 
-/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 23-04-2022 10:14:05 PM ******/
+/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 24-04-2022 10:21:36 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -297,5 +288,13 @@ AS
 	Insert into Product (ProdCatId,ProdName,ProdDescription) values(@prodCatId,@prodName,@prodDescription);
 	set @id = SCOPE_IDENTITY();
 RETURN @id
+
+--------
+CREATE TYPE dbo.ProdAttrDictionary AS TABLE
+(
+   ID int NOT NULL,
+   ProdAttr nvarchar(250) NOT NULL
+);
+GO
 
 
