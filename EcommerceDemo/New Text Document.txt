@@ -271,7 +271,7 @@ on pc.ProdCatId = p.ProdCatId
 USE [ECommerceDemo]
 GO
 
-/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 24-04-2022 10:21:36 PM ******/
+/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 24-04-2022 11:20:32 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -279,15 +279,22 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 ALTER PROCEDURE [dbo].[sp_CreateProduct]
 	@prodDescription varchar(max),
 	@prodName varchar(250),
 	@prodCatId int,
+	@Attrvalue  dbo.ProdAttrDictionary READONLY,
 	@id int output
 AS
 	Insert into Product (ProdCatId,ProdName,ProdDescription) values(@prodCatId,@prodName,@prodDescription);
 	set @id = SCOPE_IDENTITY();
+
+	Insert into [dbo].[ProductAttribute] (ProductId,AttributeId,AttributeValue)
+		Select @id,attr.ID,attr.ProdAttr from @Attrvalue attr;
+
 RETURN @id
+
 
 --------
 CREATE TYPE dbo.ProdAttrDictionary AS TABLE
