@@ -67,42 +67,38 @@ namespace EcommerceDemo.Data
             List<Product> products = new List<Product>();
             while (dbDataReader.Read())
             {
+
                 Product product1 = new Product();
                 product1.ProdDescription = dbDataReader["ProdDescription"].ToString();
                 product1.ProdName = dbDataReader["ProdName"].ToString();
                 product1.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);
                 product1.ProdCatId = Convert.ToInt32(dbDataReader["ProdCatId"]);
                 product1.CategoryName = dbDataReader["CategoryName"].ToString();
-                products.Add(product1);
-            }
-
-            dbDataReader.NextResult();
-            Dictionary<int, ProductAttribute> dic = new Dictionary<int, ProductAttribute>();
-            while (dbDataReader.Read())
-            {
-                ProductAttribute productAttribute = new ProductAttribute();
-                productAttribute.Name = dbDataReader["AttributeName"].ToString();
-                if (dbDataReader["AttributeValue"] != DBNull.Value)
+                if (products.Any(x => x.ProductId == product1.ProductId))
                 {
-                    productAttribute.Value = dbDataReader["AttributeValue"].ToString();
+                    if (dbDataReader["AttributeId"] != DBNull.Value && dbDataReader["AttributeName"] != DBNull.Value)
+                    {
+                        products.FirstOrDefault(x => x.ProductId == product1.ProductId).attributeNameList.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeName"].ToString());
+                        products.FirstOrDefault(x => x.ProductId == product1.ProductId).attributeValueList.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeValue"] == DBNull.Value ? string.Empty : dbDataReader["AttributeValue"].ToString());
+                    }
                 }
-                productAttribute.ProdCatId = Convert.ToInt32(dbDataReader["ProdCatId"]);
-                productAttribute.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);
-                dic.Add(Convert.ToInt32(dbDataReader["AttributeId"]), productAttribute);
-            }
-
-
-            foreach (var pitem in products)
-            {
-                var ProductId = pitem.ProductId;
-                var ProdCatId = pitem.ProdCatId;
-                pitem.attributeList = new Dictionary<int, ProductAttribute>();
-                foreach (var item in dic.Where(x => x.Value.ProdCatId == ProdCatId && x.Value.ProductId == ProductId))
+                else
                 {
-                    pitem.attributeList.Add(item.Key, item.Value);
+                    product1.attributeNameList = new Dictionary<int, string>();
+                    product1.attributeValueList = new Dictionary<int, string>();
+                    if (dbDataReader["AttributeId"] != DBNull.Value && dbDataReader["AttributeName"] != DBNull.Value)
+                    {
+                        product1.attributeNameList?.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeName"].ToString());
+                        product1.attributeValueList?.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeValue"] == DBNull.Value ? string.Empty : dbDataReader["AttributeValue"].ToString());
+                    }
+                    products.Add(product1);
                 }
-            }
 
+            }
             return products;
         }
 

@@ -7,8 +7,17 @@
 }
 
 @{
-    Product product = new Product();
+    List<Product> products = Model.products.Where(x => x.ProdCatId == 1).ToList();
     var productCategories = Model.products.Select(c => new { c.CategoryName, c.ProdCatId }).Distinct();
+    Dictionary<int, string> MasterattributeNameList = new Dictionary<int, string>();
+    foreach (var item in products)
+    {
+        foreach (var att in item.attributeNameList)
+        {
+            MasterattributeNameList.Add(att.Key, att.Value);
+        }
+    }
+    int counter = 0;
 }
 
 <p id="Createproduct">
@@ -22,35 +31,55 @@
 
     <div class="tableFixHead">
         <table class="table">
-            <thead>
+            <thead id="ProductheaderList">
                 <tr>
-                    <th>
-                        Product Name
-                    </th>
-                    <th>
-                        Product Description
-                    </th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    @foreach (var item in MasterattributeNameList)
+                    {
+                        <th id="@item.Key">
+                            @item.Value
+                        </th>
+                    }
                     <th>
                         Operation
                     </th>
                 </tr>
             </thead>
             <tbody id="ProductList">
-                @foreach (var item in Model.products.Where(x => x.ProdCatId == 1))
+                @foreach (var item in products)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProdName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProdDescription)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdDescription)
+                    </td>
+                    @if (item.attributeValueList.Any())
+                    {
+                        @foreach (var atrvalue in item.attributeValueList)
+                        {
+                            counter++;
+                            <td id="@atrvalue.Key">
+                                @Html.DisplayFor(modelItem => atrvalue.Value)
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < counter; i++)
+                        {
+                            <td></td>
+                        }
+                    }
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -63,4 +92,5 @@
 
 <script type="text/javascript">
     var ProudctList = @Html.Raw(Json.Serialize(Model.products));
+    var MasterAttrList = @Html.Raw(Json.Serialize(MasterattributeNameList))
 </script>

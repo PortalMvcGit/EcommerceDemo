@@ -24,7 +24,12 @@ namespace EcommerceDemo.Model
         /// <summary>
         /// Get or Set Attribute list
         /// </summary>
-        public Dictionary<int, ProductAttribute> attributeList { get; set; }
+        public Dictionary<int, string> attributeNameList { get; set; }
+
+        /// <summary>
+        /// Get or Set Attribute list
+        /// </summary>
+        public Dictionary<int, string> attributeValueList { get; set; }
 
     }
 
