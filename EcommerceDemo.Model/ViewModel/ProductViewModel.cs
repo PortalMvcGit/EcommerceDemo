@@ -38,5 +38,15 @@ namespace EcommerceDemo.Model
         [Required(ErrorMessage = "Please Enter Product Category")]
         public int ProdCatId { get; set; }
 
+        /// <summary>
+        /// Get or Set Attribute list
+        /// </summary>
+        public Dictionary<int, string> attributeNameList { get; set; }
+
+        /// <summary>
+        /// Get or Set Attribute list
+        /// </summary>
+        public Dictionary<int, string> attributeValueList { get; set; }
+
     }
 }

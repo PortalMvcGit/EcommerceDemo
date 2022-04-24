@@ -12,6 +12,8 @@ namespace EcommerceDemo.Web
         public AutoMapperProfile()
         {
             CreateMap<ProductViewModel, Product>();
+
+            //CreateMap<List<Product>,List<ProductViewModel>>();
         }
     }
 }

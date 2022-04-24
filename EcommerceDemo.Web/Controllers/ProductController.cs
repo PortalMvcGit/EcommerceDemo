@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Net;
 
 namespace EcommerceDemo.Web.Controllers
 {
@@ -73,14 +74,16 @@ namespace EcommerceDemo.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult CreateProduct(ProductViewModel productViewModel)
+        public JsonResult CreateProduct([FromBody] ProductViewModel productViewModel)
         {
+            JsonResponse jsonResponse = new JsonResponse();
             if (ModelState.IsValid)
             {
+                jsonResponse.Status = HttpStatusCode.OK.ToString();
                 Product product = _mapper.Map<Product>(productViewModel);
                 _serviceHelperWebApi.ExecuteServicePostRequest<Product, int>("ProductApi/CreateProduct", product);
             }
-                return Json(new object());
+            return Json(jsonResponse);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 
     $("#ProdCatId").on('change', function GetProductByCate(e) {
-
         var tr = '';
         var th = '';
         th += '<tr>';
@@ -45,4 +44,54 @@
         $("#productCreateArea").show();
     });
 
+
+    $("#productCreatebutton").on('click', function CreateProduct(e) {
+        if ($("form").valid()) {
+            var productViewModeltest = $('form').serializeArray();
+            var productViewModel = CovertToJson(productViewModeltest, true);
+            productViewModel.attributeNameList = MasterAttrList;
+            attrvalue = {};
+            $.each(MasterAttrList, function (i, e) {
+                attrvalue[i] = $("#attrName_" + i).val();
+                $("#attrName_" + i).val();
+                console.log(i);
+            });
+            debugger;
+            productViewModel.attributeValueList = attrvalue;
+            var form = $('form');
+            var token = $('input[name="__RequestVerificationToken"]', form).val();
+            debugger;
+            $.ajax({
+                url: '/Product/CreateProduct',
+                method: 'POST',
+                dataType: 'json',
+                headers: {
+                    "RequestVerificationToken": token
+                },
+                contentType: "application/json",
+                data: JSON.stringify(productViewModel),
+                error: function (e) {
+                    console.log(e);
+                }
+            }).done(function (response) {
+                if (response.status == "Ok") {
+                    alert('Hi Ok staus')
+                }
+            })
+        }
+    });
+
 });
+
+function CovertToJson(data, returnJsonObject) {
+    var jsonData = {};
+    $(data).each(function (i, e) {
+        jsonData[e.name] = e.value;
+    });
+
+    if (returnJsonObject == true) {
+        return jsonData;
+    } else {
+        return JSON.stringify(jsonData);
+    }
+}
