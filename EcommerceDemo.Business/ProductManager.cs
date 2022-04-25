@@ -35,14 +35,22 @@ namespace EcommerceDemo.Business
         }
 
         /// <summary>
-        /// 
+        /// Create product
         /// </summary>
         /// <returns></returns>
         public int Create(Product product)
         {
-
-
             return _productRepo.Insert(product);
+        }
+
+        /// <summary>
+        /// Edit product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Product GetProduct(int id)
+        {
+            return _productRepo.GetById(id);
         }
 
     }

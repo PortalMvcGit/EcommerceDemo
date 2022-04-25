@@ -63,5 +63,17 @@ namespace EcommerceDemo.Service.Controllers
             return _productManager.Create(product);
         }
 
+        /// <summary>
+        /// Update Product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetProduct/{id}")]
+        public Product GetProduct(int id)
+        {
+            return _productManager.GetProduct(id);
+        }
+
     }
 }

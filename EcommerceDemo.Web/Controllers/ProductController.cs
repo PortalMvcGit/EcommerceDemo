@@ -85,5 +85,20 @@ namespace EcommerceDemo.Web.Controllers
             }
             return Json(jsonResponse);
         }
+
+        /// <summary>
+        /// Edit Product Details
+        /// </summary>
+        /// <param name="productViewModel"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            Product product = _serviceHelperWebApi.ExecuteServiceGetRequest<Product>("ProductApi/GetProduct/" + id);
+            ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(product);
+            productViewModel.products = new List<Product>();
+            productViewModel.products.Add(product);
+            return View("~/Views/Product/_Edit.cshtml", productViewModel);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace EcommerceDemo.Web
         {
             CreateMap<ProductViewModel, Product>();
 
-            //CreateMap<List<Product>,List<ProductViewModel>>();
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

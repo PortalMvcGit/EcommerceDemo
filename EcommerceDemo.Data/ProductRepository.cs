@@ -55,7 +55,29 @@ namespace EcommerceDemo.Data
         /// <returns></returns>
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            List<DbParameter> parameters = new List<DbParameter>();
+            parameters.Add(BaseDataAccess.GetParameter("@id", id));
+            DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetProductByid", parameters);
+            Product product = new Product();
+            while (dbDataReader.Read())
+            {
+                product.ProdDescription = dbDataReader["ProdDescription"].ToString();
+                product.ProdName = dbDataReader["ProdName"].ToString();
+                product.ProductId = Convert.ToInt32(dbDataReader["ProductId"]);
+                product.ProdCatId = Convert.ToInt32(dbDataReader["ProdCatId"]);
+            }
+            dbDataReader.NextResult();
+            product.attributeValueList = new Dictionary<int, string>();
+            product.attributeNameList = new Dictionary<int, string>();
+            while (dbDataReader.Read())
+            {
+                product.attributeValueList.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeValue"] == DBNull.Value ? string.Empty : dbDataReader["AttributeValue"].ToString());
+                product.attributeNameList.Add(Convert.ToInt32(dbDataReader["AttributeId"]),
+                            dbDataReader["AttributeName"].ToString());
+            }
+
+            return product;
         }
 
         /// <summary>

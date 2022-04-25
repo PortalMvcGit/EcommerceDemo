@@ -94,7 +94,13 @@ namespace Core.Common
 
         }
 
-
+        /// <summary>
+        /// Call Get Service
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="apiUrl"></param>
+        /// <param name="cancelTime"></param>
+        /// <returns></returns>
         public override TResult ExecuteServiceGetRequest<TResult>(string apiUrl, int cancelTime = 0)
         {
             TResult result = default(TResult);
@@ -109,9 +115,9 @@ namespace Core.Common
             {
                 // Add an Accept header for JSON format.
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-               
-                    client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
-               
+
+                client.BaseAddress = new Uri(_config["AppSettings:ServiceUrl"]);
+
                 try
                 {
                     if (cancelTime == 0)
@@ -141,7 +147,7 @@ namespace Core.Common
                 }
                 else
                 {
-                    if (httpResponse.StatusCode == HttpStatusCode.InternalServerError )
+                    if (httpResponse.StatusCode == HttpStatusCode.InternalServerError)
                     {
                         //throw new Exception(httpResponse.Content.ReadAsStringAsync().Result);
                         throw new Exception(httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult());

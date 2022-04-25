@@ -1,0 +1,63 @@
+﻿@using EcommerceDemo.Model;
+@model EcommerceDemo.Model.ProductViewModel
+<p>
+    <b>Edit Product</b>
+</p>
+@{
+    Product product = new Product();
+    Dictionary<int, string> MasterattributeNameList = new Dictionary<int, string>();
+    foreach (var item in Model.products)
+    {
+        foreach (var att in item.attributeNameList)
+        {
+            MasterattributeNameList.TryAdd(att.Key, att.Value);
+        }
+    }
+}
+<form method="post" id="ProductCreate">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProdName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ProdName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProdName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProdDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ProdDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProdDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @foreach (var item in MasterattributeNameList)
+        {
+            <div class="form-group">
+                @Html.Label("item", item.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @if (Model.attributeValueList.ContainsKey(item.Key) && !string.IsNullOrEmpty(Model.attributeValueList[item.Key]))
+                    {
+                        @Html.TextBox(Model.attributeValueList[item.Key].ToString(), Model.attributeValueList[item.Key].ToString(), new { @class = "form-control attrName", @id = "attrName_" + item.Key + "" })
+
+                    }
+                    else
+                    {
+                        @Html.Editor(item.Key.ToString(), item.Value, new { htmlAttributes = new { @class = "form-control attrName", @id = "attrName_" + item.Key + "" } })
+                    }
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-success" id="productCreatebutton" />
+            </div>
+        </div>
+    </div>
+
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
