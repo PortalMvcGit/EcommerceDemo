@@ -257,21 +257,11 @@ left Join ProductAttributeLookup PL
 On PL.AttributeId = PA.AttributeId
 left join ProductCategory pc
 on pc.ProdCatId = p.ProdCatId
-
-
-
-
-
-
-
-
-
-
-
+----------------------------------------------
 USE [ECommerceDemo]
 GO
 
-/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 24-04-2022 11:20:32 PM ******/
+/****** Object: SqlProcedure [dbo].[sp_CreateProduct] Script Date: 26-04-2022 12:35:39 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -280,7 +270,7 @@ GO
 
 
 
-ALTER PROCEDURE [dbo].[sp_CreateProduct]
+CREATE PROCEDURE [dbo].[sp_CreateProduct]
 	@prodDescription varchar(max),
 	@prodName varchar(250),
 	@prodCatId int,
@@ -296,6 +286,7 @@ AS
 RETURN @id
 
 
+
 --------
 CREATE TYPE dbo.ProdAttrDictionary AS TABLE
 (
@@ -303,5 +294,44 @@ CREATE TYPE dbo.ProdAttrDictionary AS TABLE
    ProdAttr nvarchar(250) NOT NULL
 );
 GO
+
+
+
+
+
+
+
+
+---------------------------------------------------
+
+
+USE [ECommerceDemo]
+GO
+
+/****** Object: SqlProcedure [dbo].[sp_GetProductByid] Script Date: 26-04-2022 12:35:20 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[sp_GetProductByid]
+	@id int = 0
+AS
+Select * from Product P 
+ where p.ProductId = @id;
+
+
+Select * from ProductAttribute pa
+inner join ProductAttributeLookup pal
+on pa.AttributeId = pal.AttributeId
+where ProductId = @id
+
+
+
+RETURN
+
 
 
