@@ -1,5 +1,13 @@
 ﻿$(document).ready(function () {
+    $(document).on('change', '#ProductCreate #ProductCatCreate', function (e) {
+        dropvalue = $(this).val();
+        $('.attrName,.attrLabel').hide().val('');
+        $('.attrName,.attrLabel').filter(function () {
+            return $(this).attr('prodcatid') == dropvalue
+        }).show();
+    });
 
+    var selectedProdCat;
     $("#ProdCatId").on('change', function GetProductByCate(e) {
         var tr = '';
         var th = '';
@@ -7,6 +15,7 @@
         th += '<th>Product Name</th>';
         th += '<th>Product Description</th>';
         var counter = 0;
+        selectedProdCat = e.currentTarget.value;
         $.each(ProudctList, function (index, item) {
             if (item.prodCatId == e.currentTarget.value) {
                 tr += '<tr>';
@@ -32,7 +41,7 @@
                     if (th.indexOf(attrName) == -1) {
                         th += '<th>' + attrName + '</th>';
                     }
-                    
+
                 });
             }
         });
@@ -42,25 +51,35 @@
 
     });
     $("#productCreateArea").hide();
+
     $("#Createproduct").on('click', function HideProductList() {
         $("#productListArea,#Createproduct").hide();
         $("#productCreateArea").show();
+
     });
 
 
     $("#productCreatebutton").on('click', function CreateProduct(e) {
         if ($("form").valid()) {
+            var productViewModel = {};
             var productViewModeltest = $('form').serializeArray();
-            var productViewModel = CovertToJson(productViewModeltest, true);
-            productViewModel.attributeNameList = MasterAttrList;
+            productViewModel = CovertToJson(productViewModeltest, true);
+
             attrvalue = {};
+            attrName = {};
             $.each(MasterAttrList, function (i, e) {
-                attrvalue[i] = $("#attrName_" + i).val();
-                $("#attrName_" + i).val();
-                console.log(i);
+                i++;
+                if (e.parentId == $("[id*='ProductCatCreate'] :selected").val()) {
+                    
+                    attrvalue[i] = $("#attrName_" + i).val();
+                    attrName[e.value] = e.name;
+                    $("#attrName_" + i).val();
+                    console.log(i);
+                }
             });
-            debugger;
+            productViewModel.attributeNameList = attrName;
             productViewModel.attributeValueList = attrvalue;
+            productViewModel.ProdCatId = $("#ProdCatId").val();
             var form = $('form');
             var token = $('input[name="__RequestVerificationToken"]', form).val();
             debugger;

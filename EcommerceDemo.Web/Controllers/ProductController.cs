@@ -74,7 +74,7 @@ namespace EcommerceDemo.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult CreateProduct([FromBody] ProductViewModel productViewModel)
+        public JsonResult CreateProduct([FromBody]ProductViewModel productViewModel)
         {
             JsonResponse jsonResponse = new JsonResponse();
             if (ModelState.IsValid)

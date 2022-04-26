@@ -1,5 +1,6 @@
 ﻿@using System.Collections.Generic;
 @using EcommerceDemo.Model;
+@using EcommerceDemo.Web.Common;
 @inject IJsonHelper Json;
 @model ProductViewModel;
 @{
@@ -49,37 +50,37 @@
             <tbody id="ProductList">
                 @foreach (var item in products)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProdName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProdDescription)
-                    </td>
-                    @if (item.attributeValueList.Any())
-                    {
-                        @foreach (var atrvalue in item.attributeValueList)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdDescription)
+                        </td>
+                        @if (item.attributeValueList.Any())
                         {
-                            counter++;
-                            <td id="@atrvalue.Key">
-                                @Html.DisplayFor(modelItem => atrvalue.Value)
-                            </td>
+                            @foreach (var atrvalue in item.attributeValueList)
+                            {
+                                counter++;
+                                <td id="@atrvalue.Key">
+                                    @Html.DisplayFor(modelItem => atrvalue.Value)
+                                </td>
+                            }
                         }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < counter; i++)
+                        else
                         {
-                            <td></td>
+                            for (int i = 0; i < counter; i++)
+                            {
+                                <td></td>
+                            }
                         }
-                    }
 
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                    </td>
-                </tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -92,5 +93,6 @@
 
 <script type="text/javascript">
     var ProudctList = @Html.Raw(Json.Serialize(Model.products));
-    var MasterAttrList = @Html.Raw(Json.Serialize(MasterattributeNameList))
+    var MasterAttrList = @Html.Raw(Json.Serialize(MasterDataHelper.GetAttributeNameList()))
+    var OldMasterAttrList = @Html.Raw(Json.Serialize(MasterattributeNameList))
 </script>
