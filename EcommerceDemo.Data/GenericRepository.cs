@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EcommerceDemo.Model;
+using System.Collections.Generic;
 
 namespace EcommerceDemo.Data
 {

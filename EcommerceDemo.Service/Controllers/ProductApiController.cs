@@ -41,6 +41,8 @@ namespace EcommerceDemo.Service.Controllers
             _productManager = new ProductManager(_config);
         }
 
+        
+
         /// <summary>
         /// Get the Product list
         /// </summary>

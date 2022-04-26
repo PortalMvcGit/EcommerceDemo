@@ -52,6 +52,5 @@ namespace EcommerceDemo.Business
         {
             return _productRepo.GetById(id);
         }
-
     }
 }

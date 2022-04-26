@@ -1,4 +1,5 @@
 using Core.Common;
+using EcommerceDemo.Web;
 using EcommerceDemo.Web.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,7 +52,7 @@ namespace EcommerceDemo.Web2
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseMiddleware<CacheMiddleware>();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
