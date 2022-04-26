@@ -20,8 +20,12 @@ namespace EcommerceDemo.Data
 
         public List<MasterData> GetAll()
         {
+            throw new NotImplementedException();
+        }
+
+        public MasterData GetAllMaster()
+        {
             DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetMasterData", null);
-            List<MasterData> masterData = new List<MasterData>();
             MasterData masters = new MasterData();
             masters.attributeNameList = new List<NameValueData>();
             while (dbDataReader.Read())
@@ -32,9 +36,8 @@ namespace EcommerceDemo.Data
                 nameValueData.ParentId = Convert.ToInt32(dbDataReader["ProdCatId"]);
                 masters.attributeNameList.Add(nameValueData);
             }
-            masterData.Add(masters);
 
-            return masterData;
+            return masters;
         }
 
         public MasterData GetById(int id)

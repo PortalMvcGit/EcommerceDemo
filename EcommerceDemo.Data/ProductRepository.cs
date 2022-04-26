@@ -125,5 +125,9 @@ namespace EcommerceDemo.Data
             return products;
         }
 
+        public Product GetAllMaster()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

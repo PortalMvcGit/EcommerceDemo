@@ -45,7 +45,7 @@ namespace EcommerceDemo.Service.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetMasterData")]
-        public List<MasterData> GetMasterData()
+        public MasterData GetMasterData()
         {
             return _masterManager.GetMasterData();
         }

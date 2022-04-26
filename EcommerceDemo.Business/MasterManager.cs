@@ -27,9 +27,11 @@ namespace EcommerceDemo.Business
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<MasterData> GetMasterData()
+        public MasterData GetMasterData()
         {
-            return _masterRepo.GetAll();
+            MasterData master = new MasterData();
+            master = _masterRepo.GetAllMaster();
+            return master;
         }
 
     }

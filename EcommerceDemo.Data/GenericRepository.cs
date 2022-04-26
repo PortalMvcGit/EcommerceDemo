@@ -16,6 +16,8 @@ namespace EcommerceDemo.Data
         /// Get All Details
         /// </summary>
         /// <returns></returns>
+        T GetAllMaster();
+
         List<T> GetAll();
     }
 }

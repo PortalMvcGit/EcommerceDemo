@@ -31,7 +31,14 @@ namespace EcommerceDemo.Web.Common
         public void Register()
         {
             ServiceHelperWebApi serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor, _config);
+            List<MasterData> allmaster = MasterDataHelper.GetAllMasterDetailType();
             MasterData master = serviceHelperWebApi.ExecuteServiceGetRequest<MasterData>("MasterApi/GetMasterData");
+            allmaster.Add(new MasterData()
+            {
+                attributeNameList = master.attributeNameList
+            });
+
+
         }
     }
 }
