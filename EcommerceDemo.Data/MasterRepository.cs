@@ -1,5 +1,6 @@
 ﻿using Core.Common;
 using EcommerceDemo.Model;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,15 @@ namespace EcommerceDemo.Data
 {
     public class MasterRepository : IMasterDataRepository
     {
+        private readonly IMemoryCache memoryCache;
+
         public MasterRepository(IConfiguration configuration)
         {
             BaseDataAccess.ConnectionString = configuration["AppSettings:ConnectionString"];
+            if (memoryCache == null)
+            {
+                memoryCache = new MemoryCache(new MemoryCacheOptions());
+            }
         }
         public void Delete(MasterData entity)
         {
@@ -25,18 +32,22 @@ namespace EcommerceDemo.Data
 
         public MasterData GetAllMaster()
         {
-            DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetMasterData", null);
-            MasterData masters = new MasterData();
-            masters.attributeNameList = new List<NameValueData>();
-            while (dbDataReader.Read())
+            MasterData masters = memoryCache.Get<MasterData>("MASTER_DATA");
+            if (masters == null)
             {
-                NameValueData nameValueData = new NameValueData();
-                nameValueData.Name = dbDataReader["AttributeName"].ToString();
-                nameValueData.Value = Convert.ToInt32(dbDataReader["AttributeId"]);
-                nameValueData.ParentId = Convert.ToInt32(dbDataReader["ProdCatId"]);
-                masters.attributeNameList.Add(nameValueData);
+                masters = new MasterData();
+                DbDataReader dbDataReader = BaseDataAccess.GetDataReader("sp_GetMasterData", null);
+                masters.attributeNameList = new List<NameValueData>();
+                while (dbDataReader.Read())
+                {
+                    NameValueData nameValueData = new NameValueData();
+                    nameValueData.Name = dbDataReader["AttributeName"].ToString();
+                    nameValueData.Value = Convert.ToInt32(dbDataReader["AttributeId"]);
+                    nameValueData.ParentId = Convert.ToInt32(dbDataReader["ProdCatId"]);
+                    masters.attributeNameList.Add(nameValueData);
+                }
+                memoryCache.Set<MasterData>("MASTER_DATA", masters);
             }
-
             return masters;
         }
 
