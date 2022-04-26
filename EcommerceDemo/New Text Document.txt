@@ -332,6 +332,24 @@ where ProductId = @id
 
 
 RETURN
+.
+
+------------------
+USE [ECommerceDemo]
+GO
+
+/****** Object: SqlProcedure [dbo].[sp_GetMasterData] Script Date: 26-04-2022 7.00.31 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].sp_GetMasterData
+AS
+	SELECT * FROM ProductAttributeLookup
+RETURN 0
 
 
 
