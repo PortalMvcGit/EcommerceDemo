@@ -58,6 +58,13 @@
 
     });
 
+    
+    $("#BacktoProductList").on('click', function HideProductList() {
+        $("#productListArea,#Createproduct").show();
+        $("#productCreateArea").hide();
+
+    });
+
 
     $("#productCreatebutton").on('click', function CreateProduct(e) {
         if ($("form").valid()) {
