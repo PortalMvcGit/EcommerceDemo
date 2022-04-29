@@ -56,6 +56,11 @@ namespace EcommerceDemo.Web.Controllers
             _serviceHelperWebApi = new ServiceHelperWebApi(_httpContextAccessor, config);
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Show the first page
         /// </summary>
