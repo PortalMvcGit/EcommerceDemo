@@ -79,14 +79,22 @@ namespace EcommerceDemo.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult CreateProduct([FromBody]ProductViewModel productViewModel)
+        public JsonResult CreateProduct([FromBody] ProductViewModel productViewModel)
         {
             JsonResponse jsonResponse = new JsonResponse();
             if (ModelState.IsValid)
             {
-                jsonResponse.Status = HttpStatusCode.OK.ToString();
+                
                 Product product = _mapper.Map<Product>(productViewModel);
-                _serviceHelperWebApi.ExecuteServicePostRequest<Product, int>("ProductApi/CreateProduct", product);
+                int success = 1;//_serviceHelperWebApi.ExecuteServicePostRequest<Product, int>("ProductApi/CreateProduct", product);
+                if (success == 1)
+                {
+                    jsonResponse.Status = HttpStatusCode.OK.ToString();
+                }
+                else
+                {
+                    jsonResponse.Status = "ERROR";
+                }
             }
             return Json(jsonResponse);
         }

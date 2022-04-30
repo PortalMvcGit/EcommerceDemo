@@ -33,7 +33,6 @@
                     }
                 }
                 tr += '<td> <a href=/Product/Edit/' + item.productId + ' > Edit</a> |' +
-                    '<a href=/Product/Details/' + item.productId + ' > Details</a> |' +
                     '<a href=/Product/Delete / ' + item.productId + ' > Delete</a></td>';
                 tr += '</tr>';
 
@@ -89,7 +88,6 @@
             productViewModel.ProdCatId = $("#ProdCatId").val();
             var form = $('form');
             var token = $('input[name="__RequestVerificationToken"]', form).val();
-            debugger;
             $.ajax({
                 url: '/Product/CreateProduct',
                 method: 'POST',
@@ -100,11 +98,19 @@
                 contentType: "application/json",
                 data: JSON.stringify(productViewModel),
                 error: function (e) {
-                    console.log(e);
+                    console.log(e.status);
                 }
             }).done(function (response) {
-                if (response.status == "Ok") {
-                    alert('Hi Ok staus')
+                if (response.status == "OK") {
+                    $("#ModelTitle").html("Success");
+                    $("#ModelText").html("Your Record has been inserted successfully");
+                    $("#myModal").modal('show');
+                    $("#ModelFooter").hide();
+                } else {
+                    $("#ModelTitle").html("Fail");
+                    $("#ModelText").html("Oops Something went wrong");
+                    $("#myModal").modal('show');
+                    $("#ModelFooter").hide();
                 }
             })
         }
