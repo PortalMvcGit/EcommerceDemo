@@ -50,14 +50,15 @@
 
     });
     $("#productCreateArea").hide();
-
     $("#Createproduct").on('click', function HideProductList() {
-        $("#productListArea,#Createproduct").hide();
-        $("#productCreateArea").show();
-
+        if (isEditpage == 1) {
+            window.location.href = "/";
+        } else {
+            $("#productListArea,#Createproduct,#ProductEdit").hide();
+            $("#productCreateArea").show();
+        }
     });
-
-    
+       
     $("#BacktoProductList").on('click', function HideProductList() {
         $("#productListArea,#Createproduct").show();
         $("#productCreateArea").hide();
@@ -109,6 +110,57 @@
                 } else {
                     $("#ModelTitle").html("Fail");
                     $("#ModelText").html("Oops Something went wrong");
+                    $("#myModal").modal('show');
+                    $("#ModelFooter").hide();
+                }
+            })
+        }
+    });
+
+    $("#productUpdatebutton").on('click', function CreateProduct(e) {
+        if ($("form").valid()) {
+            var productViewModel = {};
+            var productViewModeltest = $('form').serializeArray();
+            productViewModel = CovertToJson(productViewModeltest, true);
+
+            attrvalue = {};
+            attrName = {};
+            $.each(MasterAttrList, function (i, e) {
+                i++;
+                if (e.parentId == $("#ProdCatId").val()) {
+
+                    attrvalue[i] = $("#attrName_" + i).val();
+                    attrName[e.value] = e.name;
+                    $("#attrName_" + i).val();
+                    console.log(i);
+                }
+            });
+            productViewModel.attributeNameList = attrName;
+            productViewModel.attributeValueList = attrvalue;
+            productViewModel.ProdCatId = $("#ProdCatId").val();
+            var form = $('form');
+            var token = $('input[name="__RequestVerificationToken"]', form).val();
+            $.ajax({
+                url: '/Product/CreateProduct',
+                method: 'POST',
+                dataType: 'json',
+                headers: {
+                    "RequestVerificationToken": token
+                },
+                contentType: "application/json",
+                data: JSON.stringify(productViewModel),
+                error: function (e) {
+                    console.log(e.status);
+                }
+            }).done(function (response) {
+                if (response.status == "OK") {
+                    $("#ModelTitle").html("Success");
+                    $("#ModelText").html("Your Record has been updated successfully.");
+                    $("#myModal").modal('show');
+                    $("#ModelFooter").hide();
+                } else {
+                    $("#ModelTitle").html("Fail");
+                    $("#ModelText").html("Oops Something went wrong.");
                     $("#myModal").modal('show');
                     $("#ModelFooter").hide();
                 }

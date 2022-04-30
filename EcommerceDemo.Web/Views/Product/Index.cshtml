@@ -22,13 +22,17 @@
 }
 
 @*<p id="Createproduct">
-    <b>Create New</b>
-</p>*@
+        <b>Create New</b>
+    </p>*@
 
 <div id="productListArea">
-    <p>
-        @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
-    </p>
+    <div class="unselected-field" style="display: inline-block;">
+        <label>
+            Product Category :
+            @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
+        </label>
+    </div>
+
 
     <div class="tableFixHead">
         <table class="table">

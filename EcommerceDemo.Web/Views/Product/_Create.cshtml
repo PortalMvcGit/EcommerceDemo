@@ -65,6 +65,12 @@
         </div>
     </div>
 </form>
-<div id="BacktoProductList">
+@*<div id="BacktoProductList">
     <a class="nav-link text-dark">Back to Product List</a>
+</div>*@
+<div id="BacktoProductList">
+    @Html.ActionLink("Back to List", "Index")
 </div>
+<script type="text/javascript">
+    var isEditpage = 0;
+</script>

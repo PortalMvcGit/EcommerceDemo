@@ -84,10 +84,9 @@ namespace EcommerceDemo.Web.Controllers
             JsonResponse jsonResponse = new JsonResponse();
             if (ModelState.IsValid)
             {
-                
                 Product product = _mapper.Map<Product>(productViewModel);
                 int success = _serviceHelperWebApi.ExecuteServicePostRequest<Product, int>("ProductApi/CreateProduct", product);
-                if (success == 1)
+                if (success > 0)
                 {
                     jsonResponse.Status = HttpStatusCode.OK.ToString();
                 }

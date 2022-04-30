@@ -1,4 +1,5 @@
 ﻿@using EcommerceDemo.Model;
+@using EcommerceDemo.Web.Common;
 @model EcommerceDemo.Model.ProductViewModel
 <p>
     <b>Edit Product</b>
@@ -14,9 +15,10 @@
         }
     }
 }
-<form method="post" id="ProductCreate">
+<form method="post" id="ProductEdit">
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(model => model.ProductId)
+    @Html.HiddenFor(model => model.ProdCatId)
     <div class="form-horizontal">
         <div class="form-group">
             @Html.LabelFor(model => model.ProdName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -52,12 +54,18 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Save" class="btn btn-success" id="productCreatebutton" />
+                <input type="button" value="Save" class="btn btn-success" id="productUpdatebutton" />
             </div>
         </div>
     </div>
 
 </form>
-<div>
+<div id="BacktoProductList">
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script type="text/javascript">
+    var isEditpage = 1;
+    var ProudctList = @Html.Raw(Json.Serialize(Model.products));
+    var MasterAttrList = @Html.Raw(Json.Serialize(MasterDataHelper.GetAttributeNameList()))
+    var OldMasterAttrList = @Html.Raw(Json.Serialize(MasterattributeNameList))
+</script>
