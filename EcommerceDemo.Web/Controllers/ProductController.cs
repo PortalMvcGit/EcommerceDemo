@@ -112,5 +112,26 @@ namespace EcommerceDemo.Web.Controllers
             productViewModel.products.Add(product);
             return View("~/Views/Product/_Edit.cshtml", productViewModel);
         }
+
+        /// <summary>
+        /// Delete Record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public JsonResult Delete(int? id)
+        {
+            JsonResponse jsonResponse = new JsonResponse();
+            if (id == null)
+            {
+                jsonResponse.Status = "ERROR";
+                return Json(jsonResponse);
+            }
+            int success = _serviceHelperWebApi.ExecuteServiceGetRequest<int>("ProductApi/DeleteProduct/" + id);
+            if (success == 1)
+            {
+                jsonResponse.Status = HttpStatusCode.OK.ToString();
+            }
+            return Json(jsonResponse);
+        }
     }
 }

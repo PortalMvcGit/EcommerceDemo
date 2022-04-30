@@ -46,7 +46,9 @@ namespace EcommerceDemo.Data
         /// <param name="entity"></param>
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            List<DbParameter> parameters = new List<DbParameter>();
+            parameters.Add(BaseDataAccess.GetParameter("@PRODCTID", entity.ProductId));
+            BaseDataAccess.ExecuteNonQuery("sp_DeleteProduct", parameters);
         }
 
         /// <summary>

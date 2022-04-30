@@ -4,6 +4,7 @@ using EcommerceDemo.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 
 namespace EcommerceDemo.Service.Controllers
@@ -41,7 +42,7 @@ namespace EcommerceDemo.Service.Controllers
             _productManager = new ProductManager(_config);
         }
 
-        
+
 
         /// <summary>
         /// Get the Product list
@@ -77,5 +78,23 @@ namespace EcommerceDemo.Service.Controllers
             return _productManager.GetProduct(id);
         }
 
+        /// <summary>
+        /// Delete Product
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpGet]
+        [Route("DeleteProduct/{id}")]
+        public int DeleteProduct(int id)
+        {
+            try
+            {
+                _productManager.DeleteProduct(id);
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
     }
 }

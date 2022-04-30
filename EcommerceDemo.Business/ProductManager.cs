@@ -52,5 +52,16 @@ namespace EcommerceDemo.Business
         {
             return _productRepo.GetById(id);
         }
+
+        /// <summary>
+        /// Delete product
+        /// </summary>
+        /// <param name="productId"></param>
+        public void DeleteProduct(int productId)
+        {
+            Product product = new Product();
+            product.ProductId = productId;
+            _productRepo.Delete(product);
+        }
     }
 }
