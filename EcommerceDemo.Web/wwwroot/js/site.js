@@ -15,6 +15,8 @@
     $("#ProdCatId").on('change', function GetProductByCate(e) {
         selectedProdCat = e.currentTarget.value;
         $("#currentpage").val(1)
+        $('.page-item').removeClass('active');
+        $("#pageChange").html() == 1 ? $("#pageChange").parent().addClass('active') : false;
         pageChange(true);
     });
 

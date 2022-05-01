@@ -6,7 +6,7 @@
 </p>
 @{
     Product product = new Product();
-    var productCategories = Model.products.Select(x => new { x.CategoryName, x.ProdCatId }).Distinct();
+    var productCategories = MasterDataHelper.GetProductCategory();
     Dictionary<int, string> MasterattributeNameList = new Dictionary<int, string>();
     foreach (var item in Model.products.Where(x => x.ProdCatId == 1).ToList())
     {
@@ -27,7 +27,7 @@
                 <select id="ProductCatCreate">
                     @foreach (var item in productCategories)
                     {
-                        <option value="@item.ProdCatId">@item.CategoryName</option>
+                        <option value="@item.Value">@item.Name</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.ProdCatId, "", new { @class = "text-danger" })
