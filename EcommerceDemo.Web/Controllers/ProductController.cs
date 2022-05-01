@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace EcommerceDemo.Web.Controllers
@@ -69,6 +70,9 @@ namespace EcommerceDemo.Web.Controllers
         {
             ProductViewModel productViewModel = new ProductViewModel();
             productViewModel.products = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("ProductApi");
+            productViewModel.pageSize = 3; //how many records need to show in one page
+            productViewModel.CurrentPage = 1;
+
             return View(productViewModel);
         }
 
@@ -95,6 +99,22 @@ namespace EcommerceDemo.Web.Controllers
                     jsonResponse.Status = "ERROR";
                 }
             }
+            return Json(jsonResponse);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult PageChange([FromBody] ProductViewModel productViewModel)
+        {
+            JsonResponse jsonResponse = new JsonResponse();
+            jsonResponse.Status = HttpStatusCode.OK.ToString();
+            productViewModel.products = _serviceHelperWebApi.ExecuteServiceGetRequest<List<Product>>("ProductApi");
+            productViewModel.products = productViewModel.products.Where(x => x.ProdCatId == productViewModel.ProdCatId).Skip((productViewModel.CurrentPage - 1) * productViewModel.pageSize).Take(productViewModel.pageSize).ToList();
+            jsonResponse.data = productViewModel.products;
             return Json(jsonResponse);
         }
 

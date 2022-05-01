@@ -46,7 +46,17 @@ namespace EcommerceDemo.Data
                     nameValueData.ParentId = Convert.ToInt32(dbDataReader["ProdCatId"]);
                     masters.attributeNameList.Add(nameValueData);
                 }
-                memoryCache.Set<MasterData>("MASTER_DATA", masters);
+
+
+                dbDataReader.NextResult();
+                while (dbDataReader.Read())
+                {
+                    NameValueData nameValueData = new NameValueData();
+                    nameValueData.Name = dbDataReader["CategoryName"].ToString();
+                    nameValueData.Value = Convert.ToInt32(dbDataReader["ProdCatId"]);
+                    masters.productCategory.Add(nameValueData);
+                }
+                    memoryCache.Set<MasterData>("MASTER_DATA", masters);
             }
             return masters;
         }

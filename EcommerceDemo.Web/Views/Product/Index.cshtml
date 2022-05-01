@@ -9,7 +9,7 @@
 
 @{
     List<Product> products = Model.products.Where(x => x.ProdCatId == 1).ToList();
-    var productCategories = Model.products.Select(c => new { c.CategoryName, c.ProdCatId }).Distinct();
+    var productCategories = MasterDataHelper.GetProductCategory();
     Dictionary<int, string> MasterattributeNameList = new Dictionary<int, string>();
     foreach (var item in products)
     {
@@ -24,17 +24,17 @@
 @*<p id="Createproduct">
         <b>Create New</b>
     </p>*@
-
+@Html.HiddenFor(Model => Model.pageSize)
 <div id="productListArea">
     <div class="unselected-field" style="display: inline-block;">
         <label>
             Product Category :
-            @Html.DropDownList("ProdCatId", new SelectList(productCategories, "ProdCatId", "CategoryName"), new { @id = "ProdCatId" })
+            @Html.DropDownList("ProdCatId", new SelectList(productCategories, "Value", "Name"), new { @id = "ProdCatId" })
         </label>
     </div>
 
 
-    <div class="tableFixHead">
+    <div class="tableFixHead" id="list">
         <table class="table">
             <thead id="ProductheaderList">
                 <tr>
@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody id="ProductList">
-                @foreach (var item in products)
+                @foreach (var item in products.Skip((Model.CurrentPage - 1) * Model.pageSize).Take(Model.pageSize).ToList())
                 {
                     <tr>
                         <td>
@@ -88,6 +88,22 @@
             </tbody>
         </table>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @for (int i = 1; i <= products.Count / 2; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "") ">
+                    <a class="page-link" href="#" id="pageChange" data-pagesize="@Model.pageSize">@i</a>
+                </li>
+                if (i == Model.CurrentPage)
+                {
+                    @Html.Hidden("i",i,new { id="currentpage"})
+                }
+
+            }
+
+        </ul>
+    </nav>
 </div>
 
 <div id="productCreateArea">

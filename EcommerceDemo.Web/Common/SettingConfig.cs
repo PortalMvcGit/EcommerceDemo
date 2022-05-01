@@ -35,7 +35,8 @@ namespace EcommerceDemo.Web.Common
             MasterData master = serviceHelperWebApi.ExecuteServiceGetRequest<MasterData>("MasterApi/GetMasterData");
             allmaster.Add(new MasterData()
             {
-                attributeNameList = master.attributeNameList
+                attributeNameList = master.attributeNameList,
+                productCategory = master.productCategory
             });
 
 

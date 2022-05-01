@@ -14,7 +14,8 @@
     var selectedProdCat;
     $("#ProdCatId").on('change', function GetProductByCate(e) {
         selectedProdCat = e.currentTarget.value;
-        CreateProductList(ProudctList, e.currentTarget.value);
+        $("#currentpage").val(1)
+        pageChange(true);
     });
 
     $("#productCreateArea").hide();
@@ -55,7 +56,7 @@
             });
             productViewModel.attributeNameList = attrName;
             productViewModel.attributeValueList = attrvalue;
-            productViewModel.ProdCatId = $("#ProdCatId").val();
+            productViewModel.ProdCatId = $("[id*='ProductCatCreate'] :selected").val();
             var form = $('form');
             var token = $('input[name="__RequestVerificationToken"]', form).val();
             $.ajax({
@@ -137,7 +138,49 @@
         }
     });
 
+
+    $(".pagination ").on('click', "#pageChange", pageChange);
 });
+
+function pageChange(catChange) {
+    var productViewModel = {};
+    var productViewModeltest = $('form').serializeArray();
+    productViewModel = CovertToJson(productViewModeltest, true);
+    productViewModel.ProdCatId = $("#ProdCatId").val();
+    productViewModel.pageSize = $("#pageSize").val();
+    if (typeof (catChange) != 'object') {
+        productViewModel.CurrentPage = $("#currentpage").val();
+    } else {
+        productViewModel.CurrentPage = $(this).html();
+        $("#currentpage").val($(this).html());
+        $('.page-item').removeClass('active');
+        $(this).parent().addClass('active');
+    }
+    var form = $('form');
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    $.ajax({
+        url: '/Product/PageChange',
+        method: 'post',
+        dataType: 'json',
+        headers: {
+            "RequestVerificationToken": token
+        },
+        contentType: "application/json",
+        data: JSON.stringify(productViewModel)
+        ,
+        error: function (e) {
+            console.log(e.status);
+        }
+    }).done(function (response) {
+        if (response.status == "OK") {
+            console.log(response.data);
+            CreateProductList(response.data, $("#ProdCatId").val())
+        } else {
+            alert('fail');
+        }
+    })
+
+}
 
 function DelFromGlobalproduct() {
     var data = $.grep(ProudctList, function (e) {
@@ -153,34 +196,39 @@ function CreateProductList(masterProductlist, prodctCatid) {
     th += '<th>Product Name</th>';
     th += '<th>Product Description</th>';
     var counter = 0;
-    $.each(masterProductlist, function (index, item) {
-        if (item.prodCatId == prodctCatid) {
-            tr += '<tr>';
-            tr += '<td>' + item.prodName + '</td>';
-            tr += '<td>' + item.prodDescription + '</td>';
+    if (masterProductlist.length > 0) {
+        $.each(masterProductlist, function (index, item) {
+            if (item.prodCatId == prodctCatid) {
+                tr += '<tr>';
+                tr += '<td>' + item.prodName + '</td>';
+                tr += '<td>' + item.prodDescription + '</td>';
 
-            if (Object.keys(item.attributeValueList).length > 0) {
-                $.each(item.attributeValueList, function (index, attrvalue) {
-                    tr += '<td>' + attrvalue + '</td>';
-                    counter++;
+                if (Object.keys(item.attributeValueList).length > 0) {
+                    $.each(item.attributeValueList, function (index, attrvalue) {
+                        tr += '<td>' + attrvalue + '</td>';
+                        counter++;
+                    });
+                } else {
+                    for (var i = 0; i < counter; i++) {
+                        tr += '<td></td>';
+                    }
+                }
+                tr += '<td> <a href=/Product/Edit/' + item.productId + ' > Edit</a> |' +
+                    " <a href='javascript:void(0);' data-ProductId=" + item.productId + " id='Deletemodel'>Delete</a></td>";
+                tr += '</tr>';
+
+                $.each(item.attributeNameList, function (index, attrName) {
+                    if (th.indexOf(attrName) == -1) {
+                        th += '<th>' + attrName + '</th>';
+                    }
+
                 });
-            } else {
-                for (var i = 0; i < counter; i++) {
-                    tr += '<td></td>';
-                }
             }
-            tr += '<td> <a href=/Product/Edit/' + item.productId + ' > Edit</a> |' +
-                " <a href='javascript:void(0);' data-ProductId=" + item.productId + " id='Deletemodel'>Delete</a></td>";
-            tr += '</tr>';
-
-            $.each(item.attributeNameList, function (index, attrName) {
-                if (th.indexOf(attrName) == -1) {
-                    th += '<th>' + attrName + '</th>';
-                }
-
-            });
-        }
-    });
+        });
+    } else {
+        tr += '<tr><td colspan="3" style="text-align: center;"><b>No Item</b></td>';
+        tr += '</tr>';
+    }
     th += '<th>Operation</th></tr>';
     $("#ProductheaderList").html("").html(th);
     $("#ProductList").html("").html(tr);

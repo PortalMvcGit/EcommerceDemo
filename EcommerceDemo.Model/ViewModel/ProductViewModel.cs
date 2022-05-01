@@ -48,5 +48,15 @@ namespace EcommerceDemo.Model
         /// </summary>
         public Dictionary<int, string> attributeValueList { get; set; }
 
+        /// <summary>
+        /// Current page
+        /// </summary>
+        public int CurrentPage { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int pageSize { get; set; }
+
     }
 }

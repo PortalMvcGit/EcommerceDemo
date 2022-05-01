@@ -30,5 +30,10 @@ namespace EcommerceDemo.Web.Common
         {
             return _MasterData.FirstOrDefault().attributeNameList;
         }
+
+        public static List<NameValueData> GetProductCategory()
+        {
+            return _MasterData.FirstOrDefault().productCategory;
+        }
     }
 }
